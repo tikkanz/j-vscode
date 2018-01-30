@@ -1,51 +1,29 @@
-# j README
+# j
 
-This is the README for your extension "j". After writing up a brief description, we recommend including the following sections.
+This [VS Code](https://code.visualstudio.com) extension provides support for the [j programming language](http://www.jsoftware.com/).
 
 ## Features
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+The extension currently provides syntax highlighting.
 
-For example if there is an image subfolder under your extension project workspace:
-
-\!\[feature X\]\(images/feature-x.png\)
-
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+<!-- \!\[syntax highlighting\]\(images/feature-x.png\) -->
 
 ## Requirements
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+Getting the j extension for VS Code to work involves two steps: 1.
+Install VS Code, 2. Install the j extension.
+Assuming you've installed [VS Code](https://code.visualstudio.com/) to install the j extension, start VS Code. Inside VS Code, go to the extensions view either by
+executing the ``View: Show Extensions`` command (click View->Command Palette...)
+or by clicking on the extension icon on the left side of the VS Code
+window.
 
-## Extension Settings
-
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
-
-For example:
-
-This extension contributes the following settings:
-
-* `myExtension.enable`: enable/disable this extension
-* `myExtension.thing`: set to `blah` to do something
-
-## Known Issues
-
-Calling out known issues can help limit users opening duplicate issues against your extension.
+In the extensions view, simply search for the term ``j`` in the marketplace
+search box, then select the j extension and click the install button.
+You might have to restart VS Code after this step.
 
 ## Release Notes
 
-Users appreciate release notes as you update your extension.
-
-### 1.0.0
-
-Initial release of ...
-
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
+See the [Change Log](CHANGELOG.md) for release notes.
 
 -----------------------------------------------------------------------------------------------------------
 
@@ -56,10 +34,3 @@ Added features X, Y, and Z.
 * Split the editor (`Cmd+\` on OSX or `Ctrl+\` on Windows and Linux)
 * Toggle preview (`Shift+CMD+V` on OSX or `Shift+Ctrl+V` on Windows and Linux)
 * Press `Ctrl+Space` (Windows, Linux) or `Cmd+Space` (OSX) to see a list of Markdown snippets
-
-### For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
