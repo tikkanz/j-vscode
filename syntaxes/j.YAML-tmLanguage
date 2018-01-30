@@ -1,0 +1,176 @@
+# [PackageDev] target_format: plist, ext: tmLanguage
+comment: |
+  Reference to the Oniguruma Regex libraray:
+    https://github.com/kkos/oniguruma/blob/master/doc/RE
+
+
+  * Some in comments throughout the grammar
+name: J
+scopeName: source.j
+fileTypes: [ijs, ijt]
+
+patterns:
+- include: '#operator'
+- include: '#copula'
+- include: '#string'
+- include: '#bracket'
+- include: '#explicit_defn'
+- include: '#noun_defn'
+- include: '#number'
+- include: '#note'
+- include: '#comment'
+
+repository:
+  comment:
+    patterns:
+    - name: comment.line.j
+      begin: NB\.
+      beginCaptures:
+        '0': {name: punctuation.definition.comment.begin.j}
+      end: \n
+
+  bracket:
+    patterns:
+    - name: meta.bracket.j
+      match: (?:\(|\)|,)(?!('|(?:\.'))*\.?')
+
+  copula:
+    patterns:
+    - name: copula.global.j
+      match: '=:'
+    - name: copula.local.j
+      match: =\.
+
+  explicit_arg:
+    patterns:
+    - comment: argument identifiers within explicit definition blocks
+      name: variable.parameter.j
+      match: \b[nmuvxy](?![\w.:])
+
+  explicit_defn:
+    patterns:
+    - name: definition.explicit.block.j
+      begin: \b([1-4]|13|adverb|conjunction|verb|monad|dyad)\s+(:\s*0|define)\b
+      beginCaptures:
+        '0': {name: punctuation.definition.explicit.begin.j}
+      end: ^\s*\)\s*\n
+      endCaptures:
+        '0': {name: punctuation.definition.explicit.end.j}
+      patterns:
+      - include: '#explicit_arg'
+      - include: '#operator'
+      - include: '#copula'
+      - include: '#string'
+      - include: '#keyword'
+      - include: '#number'
+      - include: '#comment'
+
+  keyword:
+    patterns:
+    - name: keyword.control.j
+      match: \b(if|do|else|elseif|for|select|case|fcase)\.(?![.:])
+    - name: keyword.control.j
+      match: \b(assert|break|continue|return|while|whilst)\.(?![.:])
+    - name: keyword.control.j
+      match: \b(throw|try|catch|catchd|catcht)\.(?![.:])
+    - name: keyword.control.j
+      match: \b(for_[A-Za-z][A-Za-z_0-9]*|goto_[A-Za-z][A-Za-z_0-9]*|label_[A-Za-z][A-Za-z_0-9]*)\.(?![.:])
+    - name: keyword.control.end.j
+      match: \bend\.(?![.:])
+
+  note:
+    patterns:
+    - name: comment.block.note.j
+      begin: ^\s*\bNote\b
+      beginCaptures:
+        '0': {name: punctuation.definition.comment.begin.j}
+      end: ^\s*\)\s*\n
+      endCaptures:
+        '0': {name: punctuation.definition.comment.end.j}
+    - comment: 'dd '
+      name: comment.line.note.j
+      match: \bNote\b(?!\s*\=[:.])\s*[\'\d].*$
+
+  noun_defn:
+    patterns:
+    - comment: multi-line noun definition
+      name: string.noun.j
+      begin: \b(0|noun)\s+(:\s*0|define)\b
+      beginCaptures:
+        '0': {name: punctuation.definition.string.block.begin.j}
+      end: ^\s*\)\s*\n
+      endCaptures:
+        '0': {name: punctuation.definition.explicit.end.j}
+
+  number:
+    patterns:
+    - name: constant.numeric.j
+      match: \b[_0-9][_0-9\.a-zA-Z]*\b(?![.:])
+
+  operator:
+    patterns:
+    - name: keyword.other.noun.j
+      match: \b(_\.|a\.|a:)(?![.:])
+    - comment: numbers with inflection and double inflections
+      name: keyword.operator.verb.j
+      match: ((_?[1-9]:)|(\b0:)|({::))(?![.:])
+    - comment: letters with inflection
+      name: keyword.operator.verb.j
+      match: \b((p\.\.)|([AcCeEiIjLopr]\.)|([ipqsux]:))(?![.:])
+    - comment: symbols with . inflection
+      name: keyword.operator.verb.j
+      match: ([<>\+\*\-%$|,#{}^~"?]\.)(?![.:])
+    - comment: 'symbols with : inflection'
+      name: keyword.operator.verb.j
+      match: ([<>\+\*\-%$|,#{};~"_/\\\[]:)(?![.:])
+    - comment: symbols with no inflection
+      name: keyword.operator.verb.j
+      match: ([<>\+\*\-%$|,#{!;^=?\[\]])(?![.:])
+    - comment: letters with inflection
+      name: keyword.operator.adverb.j
+      match: \b(([bfMt]\.)|(t:))(?![.:])
+    - comment: symbols with and without . inflection
+      name: keyword.operator.adverb.j
+      match: (([/\\]\.)|([~/\\}]))(?![.:])
+    - comment: letters with inflection
+      name: keyword.operator.conjunction.j
+      match: \b(([dDHT]\.)|([DLS]:))(?![.:])
+    - comment: 'symbols with double inflection, . or : inflection or no inflection'
+      name: keyword.operator.conjunction.j
+      match: ((&\.:)|([&@!;]\.)|([&@!`^]:)|([&@`"]))(?![.:])
+    - comment: '. or : with or without inflection (need leading whitespace)'
+      name: keyword.operator.conjunction.j
+      match: \s(([.:][.:])|([.:]))(?![.:])
+
+  string:
+    patterns:
+    - comment: |-
+        This only matches docstrings that start and end with triple quotes on
+        their own line in the void
+      name: string.docstring.julia
+      contentName: source.gfm
+      begin: "^\\s?([[:alpha:]_\u2207][[:word:]\u207A-\u209C!\u2032\u2207]*)?(\"\"\
+        \")\\s?$"
+      beginCaptures:
+        '1': {name: support.function.macro.julia}
+        '2': {name: punctuation.definition.string.begin.julia}
+      end: \s?^\s*(""")\s?
+      endCaptures:
+        '1': {name: punctuation.definition.string.end.julia}
+      patterns:
+      - include: source.gfm
+      - include: '#string_escaped_char'
+      - include: '#string_dollar_sign_interpolate'
+    - name: string.quoted.single.j
+      begin: ''''
+      beginCaptures:
+        '0': {name: punctuation.definition.string.begin.j}
+      end: (')|(\n)
+      endCaptures:
+        '1': {name: punctuation.definition.string.end.j}
+        '2':
+          comment: TODO unclosed strings not properly working yet
+          name: invalid.illegal.unclosed-string.j
+firstLineMatch: ^#!.*\bjconsole\s*$
+foldingStartMarker: ^\s*(?:if|while|for|try)\.(?![.:])(?!.*\bend\b).*$
+foldingStopMarker: ^\s*(?:end)\.(?![.:]).*$

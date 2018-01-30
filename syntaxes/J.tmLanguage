@@ -1,0 +1,316 @@
+{
+    "patterns": [
+        {
+            "include": "#operator"
+        }, 
+        {
+            "include": "#copula"
+        }, 
+        {
+            "include": "#string"
+        }, 
+        {
+            "include": "#bracket"
+        }, 
+        {
+            "include": "#explicit_defn"
+        }, 
+        {
+            "include": "#noun_defn"
+        }, 
+        {
+            "include": "#number"
+        }, 
+        {
+            "include": "#note"
+        }, 
+        {
+            "include": "#comment"
+        }
+    ], 
+    "repository": {
+        "bracket": {
+            "patterns": [
+                {
+                    "match": "(?:\\(|\\)|,)(?!('|(?:\\.'))*\\.?')", 
+                    "name": "meta.bracket.j"
+                }
+            ]
+        }, 
+        "explicit_arg": {
+            "patterns": [
+                {
+                    "comment": "argument identifiers within explicit definition blocks", 
+                    "match": "\\b[nmuvxy](?![\\w.:])", 
+                    "name": "variable.parameter.j"
+                }
+            ]
+        }, 
+        "noun_defn": {
+            "patterns": [
+                {
+                    "begin": "\\b(0|noun)\\s+(:\\s*0|define)\\b", 
+                    "endCaptures": {
+                        "0": {
+                            "name": "punctuation.definition.explicit.end.j"
+                        }
+                    }, 
+                    "beginCaptures": {
+                        "0": {
+                            "name": "punctuation.definition.string.block.begin.j"
+                        }
+                    }, 
+                    "comment": "multi-line noun definition", 
+                    "end": "^\\s*\\)\\s*\\n", 
+                    "name": "string.noun.j"
+                }
+            ]
+        }, 
+        "note": {
+            "patterns": [
+                {
+                    "begin": "^\\s*\\bNote\\b", 
+                    "beginCaptures": {
+                        "0": {
+                            "name": "punctuation.definition.comment.begin.j"
+                        }
+                    }, 
+                    "name": "comment.block.note.j", 
+                    "end": "^\\s*\\)\\s*\\n", 
+                    "endCaptures": {
+                        "0": {
+                            "name": "punctuation.definition.comment.end.j"
+                        }
+                    }
+                }, 
+                {
+                    "comment": "dd ", 
+                    "match": "\\bNote\\b(?!\\s*\\=[:.])\\s*[\\'\\d].*$", 
+                    "name": "comment.line.note.j"
+                }
+            ]
+        }, 
+        "copula": {
+            "patterns": [
+                {
+                    "match": "=:", 
+                    "name": "copula.global.j"
+                }, 
+                {
+                    "match": "=\\.", 
+                    "name": "copula.local.j"
+                }
+            ]
+        }, 
+        "keyword": {
+            "patterns": [
+                {
+                    "match": "\\b(if|do|else|elseif|for|select|case|fcase)\\.(?![.:])", 
+                    "name": "keyword.control.j"
+                }, 
+                {
+                    "match": "\\b(assert|break|continue|return|while|whilst)\\.(?![.:])", 
+                    "name": "keyword.control.j"
+                }, 
+                {
+                    "match": "\\b(throw|try|catch|catchd|catcht)\\.(?![.:])", 
+                    "name": "keyword.control.j"
+                }, 
+                {
+                    "match": "\\b(for_[A-Za-z][A-Za-z_0-9]*|goto_[A-Za-z][A-Za-z_0-9]*|label_[A-Za-z][A-Za-z_0-9]*)\\.(?![.:])", 
+                    "name": "keyword.control.j"
+                }, 
+                {
+                    "match": "\\bend\\.(?![.:])", 
+                    "name": "keyword.control.end.j"
+                }
+            ]
+        }, 
+        "operator": {
+            "patterns": [
+                {
+                    "match": "\\b(_\\.|a\\.|a:)(?![.:])", 
+                    "name": "keyword.other.noun.j"
+                }, 
+                {
+                    "comment": "numbers with inflection and double inflections", 
+                    "match": "((_?[1-9]:)|(\\b0:)|({::))(?![.:])", 
+                    "name": "keyword.operator.verb.j"
+                }, 
+                {
+                    "comment": "letters with inflection", 
+                    "match": "\\b((p\\.\\.)|([AcCeEiIjLopr]\\.)|([ipqsux]:))(?![.:])", 
+                    "name": "keyword.operator.verb.j"
+                }, 
+                {
+                    "comment": "symbols with . inflection", 
+                    "match": "([<>\\+\\*\\-%$|,#{}^~\"?]\\.)(?![.:])", 
+                    "name": "keyword.operator.verb.j"
+                }, 
+                {
+                    "comment": "symbols with : inflection", 
+                    "match": "([<>\\+\\*\\-%$|,#{};~\"_/\\\\\\[]:)(?![.:])", 
+                    "name": "keyword.operator.verb.j"
+                }, 
+                {
+                    "comment": "symbols with no inflection", 
+                    "match": "([<>\\+\\*\\-%$|,#{!;^=?\\[\\]])(?![.:])", 
+                    "name": "keyword.operator.verb.j"
+                }, 
+                {
+                    "comment": "letters with inflection", 
+                    "match": "\\b(([bfMt]\\.)|(t:))(?![.:])", 
+                    "name": "keyword.operator.adverb.j"
+                }, 
+                {
+                    "comment": "symbols with and without . inflection", 
+                    "match": "(([/\\\\]\\.)|([~/\\\\}]))(?![.:])", 
+                    "name": "keyword.operator.adverb.j"
+                }, 
+                {
+                    "comment": "letters with inflection", 
+                    "match": "\\b(([dDHT]\\.)|([DLS]:))(?![.:])", 
+                    "name": "keyword.operator.conjunction.j"
+                }, 
+                {
+                    "comment": "symbols with double inflection, . or : inflection or no inflection", 
+                    "match": "((&\\.:)|([&@!;]\\.)|([&@!`^]:)|([&@`\"]))(?![.:])", 
+                    "name": "keyword.operator.conjunction.j"
+                }, 
+                {
+                    "comment": ". or : with or without inflection (need leading whitespace)", 
+                    "match": "\\s(([.:][.:])|([.:]))(?![.:])", 
+                    "name": "keyword.operator.conjunction.j"
+                }
+            ]
+        }, 
+        "string": {
+            "patterns": [
+                {
+                    "contentName": "source.gfm", 
+                    "endCaptures": {
+                        "1": {
+                            "name": "punctuation.definition.string.end.julia"
+                        }
+                    }, 
+                    "beginCaptures": {
+                        "2": {
+                            "name": "punctuation.definition.string.begin.julia"
+                        }, 
+                        "1": {
+                            "name": "support.function.macro.julia"
+                        }
+                    }, 
+                    "patterns": [
+                        {
+                            "include": "source.gfm"
+                        }, 
+                        {
+                            "include": "#string_escaped_char"
+                        }, 
+                        {
+                            "include": "#string_dollar_sign_interpolate"
+                        }
+                    ], 
+                    "name": "string.docstring.julia", 
+                    "begin": "^\\s?([[:alpha:]_\u2207][[:word:]\u207a-\u209c!\u2032\u2207]*)?(\"\"\")\\s?$", 
+                    "comment": "This only matches docstrings that start and end with triple quotes on\ntheir own line in the void", 
+                    "end": "\\s?^\\s*(\"\"\")\\s?"
+                }, 
+                {
+                    "begin": "'", 
+                    "beginCaptures": {
+                        "0": {
+                            "name": "punctuation.definition.string.begin.j"
+                        }
+                    }, 
+                    "name": "string.quoted.single.j", 
+                    "end": "(')|(\\n)", 
+                    "endCaptures": {
+                        "2": {
+                            "comment": "TODO unclosed strings not properly working yet", 
+                            "name": "invalid.illegal.unclosed-string.j"
+                        }, 
+                        "1": {
+                            "name": "punctuation.definition.string.end.j"
+                        }
+                    }
+                }
+            ]
+        }, 
+        "comment": {
+            "patterns": [
+                {
+                    "begin": "NB\\.", 
+                    "beginCaptures": {
+                        "0": {
+                            "name": "punctuation.definition.comment.begin.j"
+                        }
+                    }, 
+                    "end": "\\n", 
+                    "name": "comment.line.j"
+                }
+            ]
+        }, 
+        "number": {
+            "patterns": [
+                {
+                    "match": "\\b[_0-9][_0-9\\.a-zA-Z]*\\b(?![.:])", 
+                    "name": "constant.numeric.j"
+                }
+            ]
+        }, 
+        "explicit_defn": {
+            "patterns": [
+                {
+                    "begin": "\\b([1-4]|13|adverb|conjunction|verb|monad|dyad)\\s+(:\\s*0|define)\\b", 
+                    "endCaptures": {
+                        "0": {
+                            "name": "punctuation.definition.explicit.end.j"
+                        }
+                    }, 
+                    "beginCaptures": {
+                        "0": {
+                            "name": "punctuation.definition.explicit.begin.j"
+                        }
+                    }, 
+                    "patterns": [
+                        {
+                            "include": "#explicit_arg"
+                        }, 
+                        {
+                            "include": "#operator"
+                        }, 
+                        {
+                            "include": "#copula"
+                        }, 
+                        {
+                            "include": "#string"
+                        }, 
+                        {
+                            "include": "#keyword"
+                        }, 
+                        {
+                            "include": "#number"
+                        }, 
+                        {
+                            "include": "#comment"
+                        }
+                    ], 
+                    "end": "^\\s*\\)\\s*\\n", 
+                    "name": "definition.explicit.block.j"
+                }
+            ]
+        }
+    }, 
+    "foldingStartMarker": "^\\s*(?:if|while|for|try)\\.(?![.:])(?!.*\\bend\\b).*$", 
+    "firstLineMatch": "^#!.*\\bjconsole\\s*$", 
+    "fileTypes": [
+        "ijs", 
+        "ijt"
+    ], 
+    "name": "J", 
+    "scopeName": "source.j", 
+    "comment": "Reference to the Oniguruma Regex libraray:\n  https://github.com/kkos/oniguruma/blob/master/doc/RE\n\n\n* Some in comments throughout the grammar\n", 
+    "foldingStopMarker": "^\\s*(?:end)\\.(?![.:]).*$"
+}
