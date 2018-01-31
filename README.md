@@ -6,7 +6,7 @@ This [VS Code](https://code.visualstudio.com) extension provides support for the
 
 The extension currently provides syntax highlighting.
 
-<!-- \!\[syntax highlighting\]\(images/feature-x.png\) -->
+![syntax highlighting](images/syntaxhilite.png)
 
 ## Requirements
 
