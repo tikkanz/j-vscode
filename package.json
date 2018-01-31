@@ -3,33 +3,42 @@
     "displayName": "J",
     "description": "J Language Support",
     "version": "0.0.1",
-    "publisher": "None",
+    "publisher": "tikkanz",
     "engines": {
         "vscode": "^1.19.0"
     },
     "bugs": {
-		"url": "https://github.com/tikkanz/j-vscode/issues"
-	},
-	"homepage": "https://github.com/tikkanz/j-vscode/README.md",
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/tikkanz/j-vscode.git"
-	},
-	"icon": "images/j-logo.png",
+        "url": "https://github.com/tikkanz/j-vscode/issues"
+    },
+    "homepage": "https://github.com/tikkanz/j-vscode/README.md",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/tikkanz/j-vscode.git"
+    },
+    "icon": "images/j-logo.png",
     "categories": [
         "Languages"
     ],
     "contributes": {
-        "languages": [{
-            "id": "j",
-            "aliases": ["J", "j"],
-            "extensions": [".ijs"],
-            "configuration": "./language-configuration.json"
-        }],
-        "grammars": [{
-            "language": "j",
-            "scopeName": "source.j",
-            "path": "./syntaxes/j.json"
-        }]
+        "languages": [
+            {
+                "id": "j",
+                "aliases": [
+                    "J",
+                    "j"
+                ],
+                "extensions": [
+                    ".ijs"
+                ],
+                "configuration": "./language-configuration.json"
+            }
+        ],
+        "grammars": [
+            {
+                "language": "j",
+                "scopeName": "source.j",
+                "path": "./syntaxes/j.json"
+            }
+        ]
     }
 }
