@@ -1,0 +1,52 @@
+{
+    "editor.tokenColorCustomizations":{
+        "textMateRules": [
+            {
+                "scope": "comment",
+                "settings": {
+                    "foreground": "#75715E",
+                    "fontStyle": "italic"
+                }
+            },
+            {
+                "scope": ["punctuation.definition.comment.begin.j",
+                    "punctuation.definition.comment.end.j"
+                    ],
+                "settings": {
+                    "foreground": "#a5a38f",
+                    "fontStyle": "italic bold"
+                }
+            },
+            {
+                "scope": ["punctuation.definition.explicit.begin.j",
+                    "punctuation.definition.explicit.end.j",
+                    "punctuation.definition.string.block.begin.j",
+                    "punctuation.definition.string.block.end.j"
+                    ],
+                "settings": {
+                    "foreground": "#ae81ff",
+                    "fontStyle": "italic bold"
+                }
+            },
+            {
+                "scope": "keyword.operator.verb.j",
+                "settings": {
+                    "foreground": "#49F672"
+                }
+            },
+            {
+                "scope": "keyword.operator.adverb.j",
+                "settings": {
+                    "foreground": "#AAEEAA"
+                }
+            },
+            {
+                "scope": "keyword.operator.conjunction.j",
+                "settings": {
+                    "foreground": "#228822"
+                }
+
+            }
+        ]
+    }
+}
