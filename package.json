@@ -1,44 +1,101 @@
 {
-    "name": "language-j",
-    "displayName": "J",
-    "description": "J Language Support",
-    "version": "0.1.0",
-    "publisher": "tikkanz",
-    "engines": {
-        "vscode": "^1.19.0"
-    },
-    "bugs": {
-        "url": "https://github.com/tikkanz/j-vscode/issues"
-    },
-    "homepage": "https://github.com/tikkanz/j-vscode/README.md",
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/tikkanz/j-vscode.git"
-    },
-    "icon": "images/j-logo.png",
-    "categories": [
-        "Languages"
-    ],
-    "contributes": {
-        "languages": [
-            {
-                "id": "j",
-                "aliases": [
-                    "J",
-                    "j"
-                ],
-                "extensions": [
-                    ".ijs"
-                ],
-                "configuration": "./language-configuration.json"
-            }
-        ],
-        "grammars": [
-            {
-                "language": "j",
-                "scopeName": "source.j",
-                "path": "./syntaxes/j.json"
-            }
-        ]
+ "name": "language-j",
+ "displayName": "J",
+ "description": "J Language Support",
+ "version": "0.2.0",
+ "publisher": "tikkanz",
+ "engines": {
+  "vscode": "^1.19.0"
+ },
+ "bugs": {
+  "url": "https://github.com/tikkanz/j-vscode/issues"
+ },
+ "homepage": "https://github.com/tikkanz/j-vscode/README.md",
+ "repository": {
+  "type": "git",
+  "url": "https://github.com/tikkanz/j-vscode.git"
+ },
+ "icon": "images/j-logo.png",
+ "categories": [
+  "Languages"
+ ],
+ "activationEvents": [
+  "onLanguage:j"
+ ],
+ "main": "./extension",
+ "contributes": {
+  "languages": [{
+   "id": "j",
+   "aliases": [
+    "J",
+    "j"
+   ],
+   "extensions": [
+    ".ijs"
+   ],
+   "configuration": "./language-configuration.json"
+  }],
+  "grammars": [{
+   "language": "j",
+   "scopeName": "source.j",
+   "path": "./syntaxes/j.json"
+  }],
+  "commands": [{
+   "command": "extension.ctrlE",
+   "title": "ctrlE"
+  }, {
+   "command": "extension.ctrlL",
+   "title": "ctrlL"
+  }, {
+   "command": "extension.ctrlshiftL",
+   "title": "ctrlshiftL"
+  }, {
+   "command": "extension.ctrlR",
+   "title": "ctrlR"
+  }, {
+   "command": "extension.ctrlEnter",
+   "title": "ctrlEnter"
+  }],
+  "keybindings": [{
+   "command": "extension.ctrlE",
+   "key": "ctrl+E",
+   "mac": "cmd+E",
+   "when": "editorTextFocus"
+  }, {
+   "command": "extension.ctrlL",
+   "key": "ctrl+L",
+   "mac": "cmd+L",
+   "when": "editorTextFocus"
+  }, {
+   "command": "extension.ctrlshiftL",
+   "key": "ctrl+shift+L",
+   "mac": "cmd+shift+L",
+   "when": "editorTextFocus"
+  }, {
+   "command": "extension.ctrlR",
+   "key": "ctrl+R",
+   "mac": "cmd+R",
+   "when": "editorTextFocus"
+  }, {
+   "command": "extension.ctrlEnter",
+   "key": "ctrl+enter",
+   "mac": "cmd+enter",
+   "when": "editorTextFocus"
+  }],
+  "configuration": {
+   "type": "object",
+   "title": "jrepl configuration",
+   "properties": {
+    "j.executablePath": {
+     "type": [
+      "string",
+      "null"
+     ],
+     "default": null,
+     "description": "Points to the jconsole executable.",
+     "scope": "window"
     }
+   }
+  }
+ }
 }
