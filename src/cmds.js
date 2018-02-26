@@ -2,12 +2,12 @@
 
 // ---------------------------------------------------------------------
 // ctrl L loads current file in terminal
-function ctrlL(e) {
+function loadScript(e) {
  load(e, false);
 }
 
 // ---------------------------------------------------------------------
-function ctrlshiftL(e) {
+function loadDisplayScript(e) {
  load(e, true);
 }
 

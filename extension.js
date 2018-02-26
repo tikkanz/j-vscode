@@ -18,9 +18,9 @@ function activate(context) {
  let cmd;
  cmd = vscode.commands.registerTextEditorCommand('language-j.ctrlE', ctrlE);
  context.subscriptions.push(cmd);
- cmd = vscode.commands.registerTextEditorCommand('language-j.ctrlL', ctrlL);
+ cmd = vscode.commands.registerTextEditorCommand('language-j.loadScript', ctrlL);
  context.subscriptions.push(cmd);
- cmd = vscode.commands.registerTextEditorCommand('language-j.ctrlshiftL', ctrlshiftL);
+ cmd = vscode.commands.registerTextEditorCommand('language-j.loadDisplayScript', ctrlshiftL);
  context.subscriptions.push(cmd);
  cmd = vscode.commands.registerTextEditorCommand('language-j.ctrlR', ctrlR);
  context.subscriptions.push(cmd);
@@ -68,11 +68,11 @@ function splitblankJ(s) {
  return s.match(/(?:[^\s']+|'[^']*')+/g);
 }
 
-function ctrlL(e) {
+function loadScript(e) {
  load(e, false);
 }
 
-function ctrlshiftL(e) {
+function loadDisplayScript(e) {
  load(e, true);
 }
 

@@ -50,12 +50,12 @@
         "title": "ctrlE"
       },
       {
-        "command": "language-j.ctrlL",
-        "title": "ctrlL"
+        "command": "language-j.loadScript",
+        "title": "J: Load Script"
       },
       {
-        "command": "language-j.ctrlshiftL",
-        "title": "ctrlshiftL"
+        "command": "language-j.loadDisplayScript",
+        "title": "J: Load and Display Script"
       },
       {
         "command": "language-j.ctrlR",
@@ -74,13 +74,13 @@
         "when": "editorTextFocus"
       },
       {
-        "command": "language-j.ctrlL",
+        "command": "language-j.loadScript",
         "key": "ctrl+L",
         "mac": "cmd+L",
         "when": "editorTextFocus"
       },
       {
-        "command": "language-j.ctrlshiftL",
+        "command": "language-j.loadDisplayScript",
         "key": "ctrl+shift+L",
         "mac": "cmd+shift+L",
         "when": "editorTextFocus"
