@@ -46,53 +46,53 @@
     ],
     "commands": [
       {
-        "command": "extension.ctrlE",
+        "command": "language-j.ctrlE",
         "title": "ctrlE"
       },
       {
-        "command": "extension.ctrlL",
+        "command": "language-j.ctrlL",
         "title": "ctrlL"
       },
       {
-        "command": "extension.ctrlshiftL",
+        "command": "language-j.ctrlshiftL",
         "title": "ctrlshiftL"
       },
       {
-        "command": "extension.ctrlR",
+        "command": "language-j.ctrlR",
         "title": "ctrlR"
       },
       {
-        "command": "extension.ctrlEnter",
+        "command": "language-j.ctrlEnter",
         "title": "ctrlEnter"
       }
     ],
     "keybindings": [
       {
-        "command": "extension.ctrlE",
+        "command": "language-j.ctrlE",
         "key": "ctrl+E",
         "mac": "cmd+E",
         "when": "editorTextFocus"
       },
       {
-        "command": "extension.ctrlL",
+        "command": "language-j.ctrlL",
         "key": "ctrl+L",
         "mac": "cmd+L",
         "when": "editorTextFocus"
       },
       {
-        "command": "extension.ctrlshiftL",
+        "command": "language-j.ctrlshiftL",
         "key": "ctrl+shift+L",
         "mac": "cmd+shift+L",
         "when": "editorTextFocus"
       },
       {
-        "command": "extension.ctrlR",
+        "command": "language-j.ctrlR",
         "key": "ctrl+R",
         "mac": "cmd+R",
         "when": "editorTextFocus"
       },
       {
-        "command": "extension.ctrlEnter",
+        "command": "language-j.ctrlEnter",
         "key": "ctrl+enter",
         "mac": "cmd+enter",
         "when": "editorTextFocus"

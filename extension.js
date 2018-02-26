@@ -5,7 +5,7 @@ let terminal;
 
 function activate(context) {
  const config = vscode.workspace.getConfiguration('j');
- const terminalName = 'J console';
+ const terminalName = 'Jconsole';
  const terminalCmd = config.executablePath;
 
  const createTerminal = () => {
@@ -16,15 +16,15 @@ function activate(context) {
  createTerminal();
 
  let cmd;
- cmd = vscode.commands.registerTextEditorCommand('extension.ctrlE', ctrlE);
+ cmd = vscode.commands.registerTextEditorCommand('language-j.ctrlE', ctrlE);
  context.subscriptions.push(cmd);
- cmd = vscode.commands.registerTextEditorCommand('extension.ctrlL', ctrlL);
+ cmd = vscode.commands.registerTextEditorCommand('language-j.ctrlL', ctrlL);
  context.subscriptions.push(cmd);
- cmd = vscode.commands.registerTextEditorCommand('extension.ctrlshiftL', ctrlshiftL);
+ cmd = vscode.commands.registerTextEditorCommand('language-j.ctrlshiftL', ctrlshiftL);
  context.subscriptions.push(cmd);
- cmd = vscode.commands.registerTextEditorCommand('extension.ctrlR', ctrlR);
+ cmd = vscode.commands.registerTextEditorCommand('language-j.ctrlR', ctrlR);
  context.subscriptions.push(cmd);
- cmd = vscode.commands.registerTextEditorCommand('extension.ctrlEnter', ctrlEnter);
+ cmd = vscode.commands.registerTextEditorCommand('language-j.ctrlEnter', ctrlEnter);
  context.subscriptions.push(cmd);
 
  vscode.window.onDidCloseTerminal((event) => {

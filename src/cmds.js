@@ -1,7 +1,7 @@
 // cmds
 
 // ---------------------------------------------------------------------
-// ctrl L runs selection on one line
+// ctrl L loads current file in terminal
 function ctrlL(e) {
  load(e, false);
 }
