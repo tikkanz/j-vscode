@@ -11,7 +11,7 @@ The extension currently provides syntax highlighting and a J console.
 
 ## Requirements
 
-Getting the j extension for VS Code to work involves two steps: 1.
+Getting the j (jprogramming) extension for VS Code to work involves two steps: 1.
 Install VS Code, 2. Install the j extension.
 Assuming you've installed [VS Code](https://code.visualstudio.com/) to install the j extension, start VS Code. Inside VS Code, go to the extensions view either by
 executing the ``View: Show Extensions`` command (click View->Command Palette...)
