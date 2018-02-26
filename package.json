@@ -46,8 +46,8 @@
     ],
     "commands": [
       {
-        "command": "language-j.ctrlE",
-        "title": "ctrlE"
+        "command": "language-j.executeSelection",
+        "title": "J: Execute Selection"
       },
       {
         "command": "language-j.loadScript",
@@ -58,17 +58,17 @@
         "title": "J: Load and Display Script"
       },
       {
-        "command": "language-j.ctrlR",
-        "title": "ctrlR"
+        "command": "language-j.executeLine",
+        "title": "J: Execute Line"
       },
       {
-        "command": "language-j.ctrlEnter",
-        "title": "ctrlEnter"
+        "command": "language-j.executeLineAdvance",
+        "title": "J: Execute Line and Advance"
       }
     ],
     "keybindings": [
       {
-        "command": "language-j.ctrlE",
+        "command": "language-j.executeSelection",
         "key": "ctrl+E",
         "mac": "cmd+E",
         "when": "editorTextFocus"
@@ -86,13 +86,13 @@
         "when": "editorTextFocus"
       },
       {
-        "command": "language-j.ctrlR",
+        "command": "language-j.executeLine",
         "key": "ctrl+R",
         "mac": "cmd+R",
         "when": "editorTextFocus"
       },
       {
-        "command": "language-j.ctrlEnter",
+        "command": "language-j.executeLineAdvance",
         "key": "ctrl+enter",
         "mac": "cmd+enter",
         "when": "editorTextFocus"

@@ -4,7 +4,7 @@ let csel, lsel;
 
 // ---------------------------------------------------------------------
 // ctrl E runs selection on one line
-function ctrlE(e) {
+function executeSelection(e) {
  if (!e.selection) return;
  getselections(e);
  let txt;
@@ -13,12 +13,12 @@ function ctrlE(e) {
 }
 
 // ---------------------------------------------------------------------
-function ctrlR(e) {
+function executeLine(e) {
  runline(e, false);
 }
 
 // ---------------------------------------------------------------------
-function ctrlEnter(e) {
+function executeLineAdvance(e) {
  runline(e, true);
 }
 

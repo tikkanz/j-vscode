@@ -16,15 +16,15 @@ function activate(context) {
  createTerminal();
 
  let cmd;
- cmd = vscode.commands.registerTextEditorCommand('language-j.ctrlE', ctrlE);
+ cmd = vscode.commands.registerTextEditorCommand('language-j.executeSelection', executeSelection);
  context.subscriptions.push(cmd);
- cmd = vscode.commands.registerTextEditorCommand('language-j.loadScript', ctrlL);
+ cmd = vscode.commands.registerTextEditorCommand('language-j.loadScript', loadScript);
  context.subscriptions.push(cmd);
- cmd = vscode.commands.registerTextEditorCommand('language-j.loadDisplayScript', ctrlshiftL);
+ cmd = vscode.commands.registerTextEditorCommand('language-j.loadDisplayScript', loadDisplayScript);
  context.subscriptions.push(cmd);
- cmd = vscode.commands.registerTextEditorCommand('language-j.ctrlR', ctrlR);
+ cmd = vscode.commands.registerTextEditorCommand('language-j.executeLine', executeLine);
  context.subscriptions.push(cmd);
- cmd = vscode.commands.registerTextEditorCommand('language-j.ctrlEnter', ctrlEnter);
+ cmd = vscode.commands.registerTextEditorCommand('language-j.executeLineAdvance', executeLineAdvance);
  context.subscriptions.push(cmd);
 
  vscode.window.onDidCloseTerminal((event) => {
@@ -82,7 +82,7 @@ function load(e, show) {
 
 let csel, lsel;
 
-function ctrlE(e) {
+function executeSelection(e) {
  if (!e.selection) return;
  getselections(e);
  let txt;
@@ -90,11 +90,11 @@ function ctrlE(e) {
   sendterm(e.document.getText(e.selection));
 }
 
-function ctrlR(e) {
+function executeLine(e) {
  runline(e, false);
 }
 
-function ctrlEnter(e) {
+function executeLineAdvance(e) {
  runline(e, true);
 }
 
