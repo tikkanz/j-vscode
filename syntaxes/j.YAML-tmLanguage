@@ -144,33 +144,13 @@ repository:
 
   string:
     patterns:
-    - comment: |-
-        This only matches docstrings that start and end with triple quotes on
-        their own line in the void
-      name: string.docstring.julia
-      contentName: source.gfm
-      begin: "^\\s?([[:alpha:]_\u2207][[:word:]\u207A-\u209C!\u2032\u2207]*)?(\"\"\
-        \")\\s?$"
-      beginCaptures:
-        '1': {name: support.function.macro.julia}
-        '2': {name: punctuation.definition.string.begin.julia}
-      end: \s?^\s*(""")\s?
-      endCaptures:
-        '1': {name: punctuation.definition.string.end.julia}
-      patterns:
-      - include: source.gfm
-      - include: '#string_escaped_char'
-      - include: '#string_dollar_sign_interpolate'
     - name: string.quoted.single.j
       begin: ''''
       beginCaptures:
         '0': {name: punctuation.definition.string.begin.j}
-      end: (')|(\n)
+      end: ''''
       endCaptures:
-        '1': {name: punctuation.definition.string.end.j}
-        '2':
-          comment: TODO unclosed strings not properly working yet
-          name: invalid.illegal.unclosed-string.j
+        '0': {name: punctuation.definition.string.end.j}
 firstLineMatch: ^#!.*\bjconsole\s*$
 foldingStartMarker: ^\s*(?:if|while|for|try)\.(?![.:])(?!.*\bend\b).*$
 foldingStopMarker: ^\s*(?:end)\.(?![.:]).*$
