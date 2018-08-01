@@ -41,7 +41,7 @@
       {
         "language": "j",
         "scopeName": "source.j",
-        "path": "./syntaxes/j.json"
+        "path": "./syntaxes/j.tmLanguage.json"
       }
     ],
     "commands": [
