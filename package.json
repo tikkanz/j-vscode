@@ -1,117 +1,117 @@
 {
-  "name": "language-j",
-  "displayName": "J",
-  "description": "J Language Support",
-  "version": "0.2.0",
-  "publisher": "tikkanz",
-  "engines": {
-    "vscode": "^1.19.0"
-  },
-  "bugs": {
-    "url": "https://github.com/tikkanz/j-vscode/issues"
-  },
-  "homepage": "https://github.com/tikkanz/j-vscode/README.md",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/tikkanz/j-vscode.git"
-  },
-  "icon": "images/j-logo.png",
-  "categories": [
-    "Languages"
-  ],
-  "activationEvents": [
-    "onLanguage:j"
-  ],
-  "main": "./extension",
-  "contributes": {
-    "languages": [
-      {
-        "id": "j",
-        "aliases": [
-          "J",
-          "j"
+    "name": "language-j",
+    "displayName": "J",
+    "description": "J Language Support",
+    "version": "0.2.1",
+    "publisher": "tikkanz",
+    "engines": {
+        "vscode": "^1.19.0"
+    },
+    "bugs": {
+        "url": "https://github.com/tikkanz/j-vscode/issues"
+    },
+    "homepage": "https://github.com/tikkanz/j-vscode/README.md",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/tikkanz/j-vscode.git"
+    },
+    "icon": "images/j-logo.png",
+    "categories": [
+        "Languages"
+    ],
+    "activationEvents": [
+        "onLanguage:j"
+    ],
+    "main": "./extension",
+    "contributes": {
+        "languages": [
+            {
+                "id": "j",
+                "aliases": [
+                    "J",
+                    "j"
+                ],
+                "extensions": [
+                    ".ijs"
+                ],
+                "configuration": "./language-configuration.json"
+            }
         ],
-        "extensions": [
-          ".ijs"
+        "grammars": [
+            {
+                "language": "j",
+                "scopeName": "source.j",
+                "path": "./syntaxes/j.tmLanguage.json"
+            }
         ],
-        "configuration": "./language-configuration.json"
-      }
-    ],
-    "grammars": [
-      {
-        "language": "j",
-        "scopeName": "source.j",
-        "path": "./syntaxes/j.tmLanguage.json"
-      }
-    ],
-    "commands": [
-      {
-        "command": "language-j.executeSelection",
-        "title": "J: Execute Selection"
-      },
-      {
-        "command": "language-j.loadScript",
-        "title": "J: Load Script"
-      },
-      {
-        "command": "language-j.loadDisplayScript",
-        "title": "J: Load and Display Script"
-      },
-      {
-        "command": "language-j.executeLine",
-        "title": "J: Execute Line"
-      },
-      {
-        "command": "language-j.executeLineAdvance",
-        "title": "J: Execute Line and Advance"
-      }
-    ],
-    "keybindings": [
-      {
-        "command": "language-j.executeSelection",
-        "key": "ctrl+E",
-        "mac": "cmd+E",
-        "when": "editorTextFocus"
-      },
-      {
-        "command": "language-j.loadScript",
-        "key": "ctrl+L",
-        "mac": "cmd+L",
-        "when": "editorTextFocus"
-      },
-      {
-        "command": "language-j.loadDisplayScript",
-        "key": "ctrl+shift+L",
-        "mac": "cmd+shift+L",
-        "when": "editorTextFocus"
-      },
-      {
-        "command": "language-j.executeLine",
-        "key": "ctrl+R",
-        "mac": "cmd+R",
-        "when": "editorTextFocus"
-      },
-      {
-        "command": "language-j.executeLineAdvance",
-        "key": "ctrl+enter",
-        "mac": "cmd+enter",
-        "when": "editorTextFocus"
-      }
-    ],
-    "configuration": {
-      "type": "object",
-      "title": "jrepl configuration",
-      "properties": {
-        "j.executablePath": {
-          "type": [
-            "string",
-            "null"
-          ],
-          "default": null,
-          "description": "Points to the jconsole executable.",
-          "scope": "window"
+        "commands": [
+            {
+                "command": "language-j.executeSelection",
+                "title": "J: Execute Selection"
+            },
+            {
+                "command": "language-j.loadScript",
+                "title": "J: Load Script"
+            },
+            {
+                "command": "language-j.loadDisplayScript",
+                "title": "J: Load and Display Script"
+            },
+            {
+                "command": "language-j.executeLine",
+                "title": "J: Execute Line"
+            },
+            {
+                "command": "language-j.executeLineAdvance",
+                "title": "J: Execute Line and Advance"
+            }
+        ],
+        "keybindings": [
+            {
+                "command": "language-j.executeSelection",
+                "key": "ctrl+E",
+                "mac": "cmd+E",
+                "when": "editorTextFocus"
+            },
+            {
+                "command": "language-j.loadScript",
+                "key": "ctrl+L",
+                "mac": "cmd+L",
+                "when": "editorTextFocus"
+            },
+            {
+                "command": "language-j.loadDisplayScript",
+                "key": "ctrl+shift+L",
+                "mac": "cmd+shift+L",
+                "when": "editorTextFocus"
+            },
+            {
+                "command": "language-j.executeLine",
+                "key": "ctrl+R",
+                "mac": "cmd+R",
+                "when": "editorTextFocus"
+            },
+            {
+                "command": "language-j.executeLineAdvance",
+                "key": "ctrl+enter",
+                "mac": "cmd+enter",
+                "when": "editorTextFocus"
+            }
+        ],
+        "configuration": {
+            "type": "object",
+            "title": "jrepl configuration",
+            "properties": {
+                "j.executablePath": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "default": null,
+                    "description": "Points to the jconsole executable.",
+                    "scope": "window"
+                }
+            }
         }
-      }
     }
-  }
 }
