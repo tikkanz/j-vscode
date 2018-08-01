@@ -3,7 +3,9 @@ comment: |
   Reference to the Oniguruma Regex libraray:
     https://github.com/kkos/oniguruma/blob/master/doc/RE
 
-
+  * The reference version for this TextMate grammar is the YAML version here:
+    https://github.com/tikkanz/j-vscode/blob/master/syntaxes/j.tmLanguage.yaml
+    Convert to other formats (JSON, PLIST) using utils (e.g. TextMate Languages extension for VS Code)
   * Some in comments throughout the grammar
 name: J
 scopeName: source.j
