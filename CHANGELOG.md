@@ -3,6 +3,9 @@ All notable changes to the "j" extension will be documented in this file.
 
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
+## [0.2.1]
+- Minor change to highlighing and syntax file naming
+
 ## [0.2.0]
 - Added support for J terminal/console
 
