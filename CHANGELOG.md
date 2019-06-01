@@ -3,6 +3,9 @@ All notable changes to the "j" extension will be documented in this file.
 
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
+## [0.2.2]
+- Narrow scope of keybindings so only apply to J files
+
 ## [0.2.1]
 - Minor change to highlighing and syntax file naming
 
