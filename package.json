@@ -17,7 +17,7 @@
     },
     "icon": "images/j-logo.png",
     "categories": [
-        "Languages"
+        "Programming Languages"
     ],
     "activationEvents": [
         "onLanguage:j"
@@ -71,31 +71,31 @@
                 "command": "language-j.executeSelection",
                 "key": "ctrl+E",
                 "mac": "cmd+E",
-                "when": "editorTextFocus"
+                "when": "editorTextFocus && editorLangId == 'j'"
             },
             {
                 "command": "language-j.loadScript",
                 "key": "ctrl+L",
                 "mac": "cmd+L",
-                "when": "editorTextFocus"
+                "when": "editorTextFocus && editorLangId == 'j'"
             },
             {
                 "command": "language-j.loadDisplayScript",
                 "key": "ctrl+shift+L",
                 "mac": "cmd+shift+L",
-                "when": "editorTextFocus"
+                "when": "editorTextFocus && editorLangId == 'j'"
             },
             {
                 "command": "language-j.executeLine",
                 "key": "ctrl+R",
                 "mac": "cmd+R",
-                "when": "editorTextFocus"
+                "when": "editorTextFocus && editorLangId == 'j'"
             },
             {
                 "command": "language-j.executeLineAdvance",
                 "key": "ctrl+enter",
                 "mac": "cmd+enter",
-                "when": "editorTextFocus"
+                "when": "editorTextFocus && editorLangId == 'j'"
             }
         ],
         "configuration": {
