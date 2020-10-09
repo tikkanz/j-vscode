@@ -17,6 +17,7 @@ patterns:
 - include: '#string'
 - include: '#bracket'
 - include: '#explicit_defn'
+- include: '#modifier_explicit_defn'
 - include: '#noun_defn'
 - include: '#number'
 - include: '#note'
@@ -47,12 +48,19 @@ repository:
     patterns:
     - comment: argument identifiers within explicit definition blocks
       name: variable.parameter.j
-      match: \b[nmuvxy](?![\w.:])
+      match: \b[xy](?![\w.:])
+
+  explicit_operand:
+    patterns:
+    - comment: operand identifiers within modifier explicit definition blocks
+      name: variable.parameter.j
+      match: \b[nmuv](?![\w.:])
 
   explicit_defn:
     patterns:
-    - name: definition.explicit.block.j
-      begin: \b([1-4]|13|adverb|conjunction|verb|monad|dyad)\s+(:\s*0|define)\b
+    - comment: explicit definition of a verb
+      name: definition.explicit.block.j
+      begin: \b([3-4]|13|verb|monad|dyad)\s+(:\s*0|define)\b
       beginCaptures:
         '0': {name: punctuation.definition.explicit.begin.j}
       end: ^\s*\)\s*\n
@@ -60,6 +68,26 @@ repository:
         '0': {name: punctuation.definition.explicit.end.j}
       patterns:
       - include: '#explicit_arg'
+      - include: '#operator'
+      - include: '#copula'
+      - include: '#string'
+      - include: '#keyword'
+      - include: '#number'
+      - include: '#comment'
+
+  modifier_explicit_defn:
+    patterns:
+    - comment: explicit definition of a modifier (adverb/conjunction)
+      name: definition.explicit.block.j
+      begin: \b([1-2]|adverb|conjunction)\s+(:\s*0|define)\b
+      beginCaptures:
+        '0': {name: punctuation.definition.explicit.begin.j}
+      end: ^\s*\)\s*\n
+      endCaptures:
+        '0': {name: punctuation.definition.explicit.end.j}
+      patterns:
+      - include: '#explicit_arg'
+      - include: '#explicit_operand'
       - include: '#operator'
       - include: '#copula'
       - include: '#string'
