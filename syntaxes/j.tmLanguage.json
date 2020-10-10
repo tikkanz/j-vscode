@@ -317,15 +317,12 @@
       "patterns": [
         {
           "name": "string.quoted.single.j",
-          "begin": "'",
-          "beginCaptures": {
-            "0": {
+          "match": "(')[^']*(')",
+          "captures": {
+            "1": {
               "name": "punctuation.definition.string.begin.j"
-            }
-          },
-          "end": "'",
-          "endCaptures": {
-            "0": {
+            },
+            "2": {
               "name": "punctuation.definition.string.end.j"
             }
           }

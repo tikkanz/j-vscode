@@ -174,12 +174,10 @@ repository:
   string:
     patterns:
     - name: string.quoted.single.j
-      begin: ''''
-      beginCaptures:
-        0: {name: punctuation.definition.string.begin.j}
-      end: ''''
-      endCaptures:
-        0: {name: punctuation.definition.string.end.j}
+      match: (')[^']*(')
+      captures:
+        1: {name: punctuation.definition.string.begin.j}
+        2: {name: punctuation.definition.string.end.j}
 firstLineMatch: ^#!.*\bjconsole\s*$
 foldingStartMarker: ^\s*(?:if|while|for|try)\.(?![.:])(?!.*\bend\b).*$
 foldingStopMarker: ^\s*(?:end)\.(?![.:]).*$
