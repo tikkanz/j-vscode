@@ -26,6 +26,9 @@
       "include": "#modifier_explicit_defn"
     },
     {
+      "include": "#explicit_string_defn"
+    },
+    {
       "include": "#noun_defn"
     },
     {
@@ -55,6 +58,7 @@
     "string": {
       "patterns": [
         {
+          "comment": "single line string",
           "name": "string.quoted.single.j",
           "match": "(')[^']*(?:''[^']*)*(')",
           "captures": {
@@ -79,6 +83,7 @@
     "copula": {
       "patterns": [
         {
+          "comment": "assignment operators",
           "name": "copula.global.j",
           "match": "=:"
         },
@@ -111,7 +116,7 @@
         {
           "comment": "explicit definition of a verb",
           "name": "definition.explicit.block.j",
-          "begin": "\\b([3-4]|13|verb|monad|dyad)\\s+(:\\s*0|define)\\b",
+          "begin": "\\b([34]|13|verb|monad|dyad)\\s+(:\\s*0|define)\\b",
           "beginCaptures": {
             "0": {
               "name": "punctuation.definition.explicit.begin.j"
@@ -154,7 +159,7 @@
         {
           "comment": "explicit definition of a modifier (adverb/conjunction)",
           "name": "definition.explicit.block.j",
-          "begin": "\\b([1-2]|adverb|conjunction)\\s+(:\\s*0|define)\\b",
+          "begin": "\\b([12]|adverb|conjunction)\\s+(:\\s*0|define)\\b",
           "beginCaptures": {
             "0": {
               "name": "punctuation.definition.explicit.begin.j"
@@ -192,6 +197,23 @@
               "include": "#comment"
             }
           ]
+        }
+      ]
+    },
+    "explicit_string_defn": {
+      "patterns": [
+        {
+          "comment": null,
+          "name": "definition.explicit.string.j",
+          "match": "\\b(([1-4]|adverb|conjunction|verb|monad|dyad)\\s+(:|def))\\s*((')[^']*(?:''[^']*)*('))",
+          "captures": {
+            "1": {
+              "name": "punctuation.definition.explicit.begin.j"
+            },
+            "4": {
+              "name": "string.quoted.single.j"
+            }
+          }
         }
       ]
     },
