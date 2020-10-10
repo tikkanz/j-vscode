@@ -33,7 +33,8 @@ repository:
 
   string:
     patterns:
-    - name: string.quoted.single.j
+    - comment: single line string
+      name: string.quoted.single.j
       match: (')[^']*(?:''[^']*)*(')
       captures:
         1: {name: punctuation.definition.string.begin.j}
@@ -46,7 +47,8 @@ repository:
 
   copula:
     patterns:
-    - name: copula.global.j
+    - comment: assignment operators
+      name: copula.global.j
       match: '=:'
     - name: copula.local.j
       match: =\.
@@ -67,7 +69,7 @@ repository:
     patterns:
     - comment: explicit definition of a verb
       name: definition.explicit.block.j
-      begin: \b([3-4]|13|verb|monad|dyad)\s+(:\s*0|define)\b
+      begin: \b([34]|13|verb|monad|dyad)\s+(:\s*0|define)\b
       beginCaptures:
         0: {name: punctuation.definition.explicit.begin.j}
       end: ^\s*\)\s*\n
@@ -86,7 +88,7 @@ repository:
     patterns:
     - comment: explicit definition of a modifier (adverb/conjunction)
       name: definition.explicit.block.j
-      begin: \b([1-2]|adverb|conjunction)\s+(:\s*0|define)\b
+      begin: \b([12]|adverb|conjunction)\s+(:\s*0|define)\b
       beginCaptures:
         0: {name: punctuation.definition.explicit.begin.j}
       end: ^\s*\)\s*\n
