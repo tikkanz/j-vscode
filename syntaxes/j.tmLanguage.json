@@ -52,6 +52,22 @@
         }
       ]
     },
+    "string": {
+      "patterns": [
+        {
+          "name": "string.quoted.single.j",
+          "match": "(')[^']*(?:''[^']*)*(')",
+          "captures": {
+            "1": {
+              "name": "punctuation.definition.string.begin.j"
+            },
+            "2": {
+              "name": "punctuation.definition.string.end.j"
+            }
+          }
+        }
+      ]
+    },
     "bracket": {
       "patterns": [
         {
@@ -310,22 +326,6 @@
           "comment": ". or : with or without inflection (need leading whitespace)",
           "name": "keyword.operator.conjunction.j",
           "match": "\\s(([.:][.:])|([.:]))(?![.:])"
-        }
-      ]
-    },
-    "string": {
-      "patterns": [
-        {
-          "name": "string.quoted.single.j",
-          "match": "(')[^']*(')",
-          "captures": {
-            "1": {
-              "name": "punctuation.definition.string.begin.j"
-            },
-            "2": {
-              "name": "punctuation.definition.string.end.j"
-            }
-          }
         }
       ]
     }
