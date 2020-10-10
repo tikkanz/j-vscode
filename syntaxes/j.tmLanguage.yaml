@@ -27,10 +27,9 @@ repository:
   comment:
     patterns:
     - name: comment.line.j
-      begin: NB\.
-      beginCaptures:
-        '0': {name: punctuation.definition.comment.begin.j}
-      end: \n
+      match: \b(NB\.).*$
+      captures:
+        1: {name: punctuation.definition.comment.begin.j}
 
   bracket:
     patterns:
@@ -62,10 +61,10 @@ repository:
       name: definition.explicit.block.j
       begin: \b([3-4]|13|verb|monad|dyad)\s+(:\s*0|define)\b
       beginCaptures:
-        '0': {name: punctuation.definition.explicit.begin.j}
+        0: {name: punctuation.definition.explicit.begin.j}
       end: ^\s*\)\s*\n
       endCaptures:
-        '0': {name: punctuation.definition.explicit.end.j}
+        0: {name: punctuation.definition.explicit.end.j}
       patterns:
       - include: '#explicit_arg'
       - include: '#operator'
@@ -81,10 +80,10 @@ repository:
       name: definition.explicit.block.j
       begin: \b([1-2]|adverb|conjunction)\s+(:\s*0|define)\b
       beginCaptures:
-        '0': {name: punctuation.definition.explicit.begin.j}
+        0: {name: punctuation.definition.explicit.begin.j}
       end: ^\s*\)\s*\n
       endCaptures:
-        '0': {name: punctuation.definition.explicit.end.j}
+        0: {name: punctuation.definition.explicit.end.j}
       patterns:
       - include: '#explicit_arg'
       - include: '#explicit_operand'
@@ -113,10 +112,10 @@ repository:
     - name: comment.block.note.j
       begin: ^\s*\bNote\b
       beginCaptures:
-        '0': {name: punctuation.definition.comment.begin.j}
+        0: {name: punctuation.definition.comment.begin.j}
       end: ^\s*\)\s*\n
       endCaptures:
-        '0': {name: punctuation.definition.comment.end.j}
+        0: {name: punctuation.definition.comment.end.j}
     - comment: 'dd '
       name: comment.line.note.j
       match: \bNote\b(?!\s*\=[:.])\s*[\'\d].*$
@@ -127,10 +126,10 @@ repository:
       name: string.noun.j
       begin: \b(0|noun)\s+(:\s*0|define)\b
       beginCaptures:
-        '0': {name: punctuation.definition.string.block.begin.j}
+        0: {name: punctuation.definition.string.block.begin.j}
       end: ^\s*\)\s*\n
       endCaptures:
-        '0': {name: punctuation.definition.explicit.end.j}
+        0: {name: punctuation.definition.explicit.end.j}
 
   number:
     patterns:
@@ -177,10 +176,10 @@ repository:
     - name: string.quoted.single.j
       begin: ''''
       beginCaptures:
-        '0': {name: punctuation.definition.string.begin.j}
+        0: {name: punctuation.definition.string.begin.j}
       end: ''''
       endCaptures:
-        '0': {name: punctuation.definition.string.end.j}
+        0: {name: punctuation.definition.string.end.j}
 firstLineMatch: ^#!.*\bjconsole\s*$
 foldingStartMarker: ^\s*(?:if|while|for|try)\.(?![.:])(?!.*\bend\b).*$
 foldingStopMarker: ^\s*(?:end)\.(?![.:]).*$

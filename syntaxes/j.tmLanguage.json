@@ -43,13 +43,12 @@
       "patterns": [
         {
           "name": "comment.line.j",
-          "begin": "NB\\.",
-          "beginCaptures": {
-            "0": {
+          "match": "\\b(NB\\.).*$",
+          "captures": {
+            "1": {
               "name": "punctuation.definition.comment.begin.j"
             }
-          },
-          "end": "\\n"
+          }
         }
       ]
     },
