@@ -13,19 +13,15 @@ The extension currently provides syntax highlighting and an integrated J console
 
 Getting the j (jprogramming) extension for VS Code to work involves two steps: 1.
 Install VS Code, 2. Install the j extension.
-Assuming you've installed [VS Code](https://code.visualstudio.com/) to install the j extension, start VS Code. Inside VS Code, go to the extensions view either by
-executing the ``View: Show Extensions`` command (click View->Command Palette...)
-or by clicking on the extension icon on the left side of the VS Code
-window.
 
-In the extensions view, simply search for the term ``j`` in the marketplace
-search box, then select the j extension and click the install button. Note that it may be easier to search for the publisher (``tikkanz``) rather than ``j``.
-You might have to restart VS Code after this step.
+In the VSCode extensions view, search for the term ``language-j`` in the marketplace
+search box, then select the j extension and click the install button.
+You might have to reload VS Code after this step.
 
 To provide highlighting for some of the ``j``'s additional language features not commonly catered for in most color themes, a number of suggested additions for your User Settings are provided in the ``user_settings_j.json`` file. The colors used work well with the Monokai theme.
 
-To provide the J console,  make an entry in User Settings pointing to the jconsole executable, for example: ``"j.executablePath": "/home/elmo/j8/bin/jconsole"`` or on Windows:
-``"j.executablePath": ""C:\\Program Files\\j64-806\\bin\\jconsole.exe"``
+To provide the J console,  make an entry in User Settings pointing to the jconsole executable, for example: ``"j.executablePath": "/home/elmo/j901/bin/jconsole"`` or on Windows:
+``"j.executablePath": ""C:\\Program Files\\j901\\bin\\jconsole.exe"``
 
 ## Integrated Terminal/Console
 

@@ -3,8 +3,19 @@ All notable changes to the "j" extension will be documented in this file.
 
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
-## [0.2.2]
+## [0.5.0] - 2020-10-11
+### Added
+- Support for explicit string definitions
+- Distinguished verb and adverb/conj explicit definitions
+
+### Changed
+- Fixed scope of single line strings
+- Fixed capture of NB. at start of comment
+
+## [0.4.0]
+## [0.3.0]
 - Narrow scope of keybindings so only apply to J files
+- Use YAML grammar as reference
 
 ## [0.2.1]
 - Minor change to highlighing and syntax file naming
