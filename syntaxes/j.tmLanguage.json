@@ -203,7 +203,7 @@
     "explicit_string_defn": {
       "patterns": [
         {
-          "comment": null,
+          "comment": "explicit string definition of verb or modifier",
           "name": "definition.explicit.string.j",
           "match": "\\b(([1-4]|adverb|conjunction|verb|monad|dyad)\\s+(:|def))\\s*((')[^']*(?:''[^']*)*('))",
           "captures": {
