@@ -1,7 +1,12 @@
 # Change Log
-All notable changes to the "j" extension will be documented in this file.
+All notable changes to the J VSCode extension will be documented in this file.
 
-Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
+## [0.5.1] - 2020-10-16
+
+### Changed
+- Fixed missing comment in language syntax definition
+- Fixed toggling of multi-line comments
+- Fixed auto-closing of single-quotes within comments and strings
 
 ## [0.5.0] - 2020-10-11
 ### Added
@@ -29,3 +34,5 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 ## [0.0.1] - 2018-01-31
 - Initial release
 - Added grammar for syntax highlighting
+
+Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
