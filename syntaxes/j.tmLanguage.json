@@ -8,6 +8,12 @@
   ],
   "patterns": [
     {
+      "include": "#direct_noun_defn"
+    },
+    {
+      "include": "#direct_defn"
+    },
+    {
       "include": "#operator"
     },
     {
@@ -111,6 +117,78 @@
         }
       ]
     },
+    "direct_defn": {
+      "patterns": [
+        {
+          "comment": "direct definition of verbs/modifiers",
+          "name": "definition.explicit.block.j",
+          "begin": "(\\{\\{)(\\)[mdvac])?(?![.:])",
+          "beginCaptures": {
+            "0": {
+              "name": "punctuation.definition.explicit.begin.j"
+            }
+          },
+          "end": "(\\}\\})(?![.:])",
+          "endCaptures": {
+            "0": {
+              "name": "punctuation.definition.explicit.end.j"
+            }
+          },
+          "patterns": [
+            {
+              "include": "#direct_noun_defn"
+            },
+            {
+              "include": "#direct_defn"
+            },
+            {
+              "include": "#explicit_arg"
+            },
+            {
+              "include": "#explicit_operand"
+            },
+            {
+              "include": "#operator"
+            },
+            {
+              "include": "#copula"
+            },
+            {
+              "include": "#string"
+            },
+            {
+              "include": "#keyword"
+            },
+            {
+              "include": "#number"
+            },
+            {
+              "include": "#comment"
+            }
+          ]
+        }
+      ]
+    },
+    "direct_noun_defn": {
+      "patterns": [
+        {
+          "comment": "direct definition of nouns",
+          "name": "string.noun.j",
+          "begin": "(\\{\\{)(\\)n)(?![.:])",
+          "beginCaptures": {
+            "0": {
+              "name": "punctuation.definition.string.block.begin.j"
+            }
+          },
+          "end": "(\\}\\})(?![.:])",
+          "endCaptures": {
+            "0": {
+              "name": "punctuation.definition.explicit.end.j"
+            }
+          }
+        }
+      ]
+    },
     "explicit_defn": {
       "patterns": [
         {
@@ -129,6 +207,12 @@
             }
           },
           "patterns": [
+            {
+              "include": "#direct_noun_defn"
+            },
+            {
+              "include": "#direct_defn"
+            },
             {
               "include": "#explicit_arg"
             },
@@ -172,6 +256,12 @@
             }
           },
           "patterns": [
+            {
+              "include": "#direct_noun_defn"
+            },
+            {
+              "include": "#direct_defn"
+            },
             {
               "include": "#explicit_arg"
             },
