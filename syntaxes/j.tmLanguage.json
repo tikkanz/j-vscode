@@ -347,7 +347,7 @@
         {
           "comment": ". or : with or without inflection (need leading whitespace)",
           "name": "keyword.operator.conjunction.j",
-          "match": "\\s(([.:][.:])|([.:]))(?![.:])"
+          "match": "(?<=\\s)([.:][.:]|[.:])(?![.:])"
         }
       ]
     }
