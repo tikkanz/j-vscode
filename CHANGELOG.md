@@ -1,6 +1,14 @@
 # Change Log
 All notable changes to the J VSCode extension will be documented in this file.
 
+## [0.5.2] - 2020-10-28
+
+### Added
+- Support for Direct Definition
+
+### Changed
+- Simplified reference to conjunctions : and . with or without modifiers 
+
 ## [0.5.1] - 2020-10-16
 
 ### Changed
