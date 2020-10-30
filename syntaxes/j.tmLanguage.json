@@ -174,13 +174,13 @@
         {
           "comment": "direct definition of nouns",
           "name": "string.noun.j",
-          "begin": "(\\{\\{)(\\)n)(?![.:])",
+          "begin": "(\\{\\{)(\\)n)",
           "beginCaptures": {
             "0": {
               "name": "punctuation.definition.string.block.begin.j"
             }
           },
-          "end": "(\\}\\})(?![.:])",
+          "end": "(^\\}\\})(?![.:])",
           "endCaptures": {
             "0": {
               "name": "punctuation.definition.explicit.end.j"
