@@ -72,7 +72,7 @@ repository:
     patterns:
     - comment: direct definition of verbs/modifiers
       name: definition.explicit.block.j
-      begin: (\{\{)(\)[mdvac])?(?![.:])
+      begin: ((\{\{)(\)[mdvac])(.*$)|(\{\{)(?![.:\)]))
       beginCaptures:
         0: {name: punctuation.definition.explicit.begin.j}
       end: (\}\})(?![.:])
