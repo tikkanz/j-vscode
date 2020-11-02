@@ -25,13 +25,15 @@ function activate(context) {
  cmd = vscode.commands.registerTextEditorCommand('language-j.executeLine', executeLine);
  context.subscriptions.push(cmd);
  cmd = vscode.commands.registerTextEditorCommand('language-j.executeLineAdvance', executeLineAdvance);
+ context.subscriptions.push(cmd); 
+ cmd = vscode.commands.registerTextEditorCommand('language-j.createTerminal', createTerminal);
  context.subscriptions.push(cmd);
 
- vscode.window.onDidCloseTerminal((event) => {
-  if (terminal && event.name === terminalName) {
-   createTerminal();
-  }
- });
+//  vscode.window.onDidCloseTerminal((event) => {
+//   if (terminal && event.name === terminalName) {
+//    createTerminal();
+//   }
+//  });
 }
 
 function deactivate() {

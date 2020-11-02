@@ -64,6 +64,10 @@
             {
                 "command": "language-j.executeLineAdvance",
                 "title": "J: Execute Line and Advance"
+            },
+            {
+                "command": "language-j.createTerminal",
+                "title": "J: Create JConsole Terminal"
             }
         ],
         "keybindings": [
