@@ -100,6 +100,12 @@
                 "key": "ctrl+enter",
                 "mac": "cmd+enter",
                 "when": "editorTextFocus && editorLangId == 'j'"
+            },
+            {
+                "command": "language-j.createTerminal",
+                "key": "ctrl+shift+J",
+                "mac": "cmd+shift+J",
+                "when": "editorTextFocus && editorLangId == 'j'"
             }
         ],
         "configuration": {
