@@ -3,9 +3,13 @@
 	"tasks": [
 		{
 			"type": "gulp",
-			"task": "compile",
+			"task": "build",
 			"problemMatcher": [],
-			"label": "gulp: compile"
+			"label": "gulp: build",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
 		}
 	]
 }
