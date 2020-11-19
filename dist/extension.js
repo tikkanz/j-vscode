@@ -1,8 +1,10 @@
+// language-j
 
 const vscode = require('vscode');
 
 let terminal;
 
+// ---------------------------------------------------------------------
 function activate(context) {
  const config = vscode.workspace.getConfiguration('j');
  const terminalName = 'Jconsole';
@@ -29,11 +31,6 @@ function activate(context) {
  cmd = vscode.commands.registerTextEditorCommand('language-j.createTerminal', createTerminal);
  context.subscriptions.push(cmd);
 
-//  vscode.window.onDidCloseTerminal((event) => {
-//   if (terminal && event.name === terminalName) {
-//    createTerminal();
-//   }
-//  });
 }
 
 function deactivate() {
@@ -42,13 +39,20 @@ function deactivate() {
  }
 }
 
+// ---------------------------------------------------------------------
 exports.activate = activate;
 exports.deactivate = deactivate;
 
+// util
+
+// ----------------------------------------------------------------------
 function has(array, element) {
  return -1 < array.indexOf(element);
 }
 
+// ----------------------------------------------------------------------
+// return if line is start of multiline definition
+// checks only most common cases using standard library
 function ismultiline(t) {
  let s = t.trim();
  if (s.length === 0) return false;
@@ -66,24 +70,36 @@ function ismultiline(t) {
  return false;
 }
 
+// ---------------------------------------------------------------------
+// split on blanks, ignoring J strings 'abc def'
 function splitblankJ(s) {
  return s.match(/(?:[^\s']+|'[^']*')+/g);
 }
 
+// cmds
+
+// ---------------------------------------------------------------------
+// ctrl L loads current file in terminal
 function loadScript(e) {
  load(e, false);
 }
 
+// ---------------------------------------------------------------------
 function loadDisplayScript(e) {
  load(e, true);
 }
 
+// ---------------------------------------------------------------------
 function load(e, show) {
  sendterm("load" + (show ? "d" : "") + " '" + e.document.fileName + "'");
 }
 
+// entry
+
 let csel, lsel;
 
+// ---------------------------------------------------------------------
+// ctrl E runs selection on one line
 function executeSelection(e) {
  if (!e.selection) return;
  getselections(e);
@@ -92,23 +108,28 @@ function executeSelection(e) {
   sendterm(e.document.getText(e.selection));
 }
 
+// ---------------------------------------------------------------------
 function executeLine(e) {
  runline(e, false);
 }
 
+// ---------------------------------------------------------------------
 function executeLineAdvance(e) {
  runline(e, true);
 }
 
+// ---------------------------------------------------------------------
 function getline(e, p) {
  return e.document.lineAt(p).text;
 }
 
+// ---------------------------------------------------------------------
 function getselections(e) {
  csel = [e.selection.start.character, e.selection.end.character];
  lsel = [e.selection.start.line, e.selection.end.line];
 }
 
+// ---------------------------------------------------------------------
 function movecursor(n) {
  vscode.commands.executeCommand("cursorMove", {
   to: "down",
@@ -120,6 +141,8 @@ function movecursor(n) {
  });
 }
 
+// ---------------------------------------------------------------------
+// returns next non-empty line, entry from given position
 function readentry(e) {
  let res = readentry1(e);
  let p = res[0];
@@ -131,6 +154,7 @@ function readentry(e) {
  return [p, res[1]];
 }
 
+// ---------------------------------------------------------------------
 function readentry1(e) {
  let p = lsel[0];
  let r = getline(e, p++);
@@ -143,6 +167,7 @@ function readentry1(e) {
  return [p, r];
 };
 
+// ---------------------------------------------------------------------
 function runline(e, advance) {
  if (!e.selection) return;
  getselections(e);
@@ -154,6 +179,7 @@ function runline(e, advance) {
   movecursor(pos - lsel[0]);
 }
 
+// ---------------------------------------------------------------------
 function sendterm(txt) {
  terminal.sendText(txt, txt[txt.length - 1] !== '\n');
 }
