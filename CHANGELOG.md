@@ -1,6 +1,16 @@
 # Change Log
 All notable changes to the J VSCode extension will be documented in this file.
 
+## [0.6.0] - 2020-11-20
+
+### Added
+- Handle Direct Definition with/without control info
+- Key-binding to start JConsole terminal
+
+### Changed
+- The JConsole Terminal no longer automatically restarts
+- Fixed closing of Direct Definition for nouns (J9.02)
+
 ## [0.5.2] - 2020-10-28
 
 ### Added
