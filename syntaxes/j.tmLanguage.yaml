@@ -43,11 +43,6 @@ repository:
         1: {name: punctuation.definition.string.begin.j}
         2: {name: punctuation.definition.string.end.j}
 
-  bracket:
-    patterns:
-    - name: meta.bracket.j
-      match: (?:\(|\)|,)(?!('|(?:\.'))*\.?')
-
   copula:
     patterns:
     - comment: assignment operators

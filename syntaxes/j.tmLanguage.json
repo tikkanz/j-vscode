@@ -78,14 +78,6 @@
         }
       ]
     },
-    "bracket": {
-      "patterns": [
-        {
-          "name": "meta.bracket.j",
-          "match": "(?:\\(|\\)|,)(?!('|(?:\\.'))*\\.?')"
-        }
-      ]
-    },
     "copula": {
       "patterns": [
         {
