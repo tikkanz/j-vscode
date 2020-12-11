@@ -418,7 +418,7 @@
         {
           "comment": "symbols with : inflection",
           "name": "keyword.operator.verb.j",
-          "match": "([<>\\+\\*\\-%$|,#{};~\"_/\\\\\\[]:)(?![.:])"
+          "match": "([<>\\+\\*\\-%$|,#{};~\"_\\/\\\\\\[]:)(?![.:])"
         },
         {
           "comment": "symbols with no inflection",
@@ -433,7 +433,7 @@
         {
           "comment": "symbols with and without . inflection",
           "name": "keyword.operator.adverb.j",
-          "match": "(([/\\\\]\\.)|([~/\\\\}]))(?![.:])"
+          "match": "(([\\/\\\\]\\.)|([~\\/\\\\}]))(?![.:])"
         },
         {
           "comment": "letters with inflection",
