@@ -1,6 +1,12 @@
 # Change Log
 All notable changes to the J VSCode extension will be documented in this file.
 
+## [0.7.0] - 2020-12-11
+
+### Changed
+- Improved numeric highlighting
+- Updated valid primitives for language changes
+
 ## [0.6.0] - 2020-11-20
 
 ### Added
