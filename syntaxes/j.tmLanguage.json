@@ -397,7 +397,7 @@
         {
           "comment": "letters with inflection",
           "name": "keyword.operator.verb.j",
-          "match": "\\b((p\\.\\.)|([AcCeEiIjLopr]\\.)|([ipqsux]:))(?![.:])"
+          "match": "\\b((p\\.\\.)|([AcCeEiIjLopruv]\\.)|([ipqsux]:))(?![.:])"
         },
         {
           "comment": "symbols with . inflection",
