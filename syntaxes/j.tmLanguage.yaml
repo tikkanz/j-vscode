@@ -14,15 +14,14 @@ fileTypes: [ijs, ijt]
 patterns:
 - include: '#direct_noun_defn'
 - include: '#direct_defn'
-- include: '#operator'
-- include: '#copula'
-- include: '#string'
-- include: '#bracket'
 - include: '#explicit_defn'
 - include: '#modifier_explicit_defn'
 - include: '#explicit_string_defn'
 - include: '#noun_defn'
 - include: '#number'
+- include: '#operator'
+- include: '#copula'
+- include: '#string'
 - include: '#note'
 - include: '#comment'
 
@@ -78,11 +77,11 @@ repository:
       - include: '#direct_defn'
       - include: '#explicit_arg'
       - include: '#explicit_operand'
+      - include: '#number'
       - include: '#operator'
       - include: '#copula'
       - include: '#string'
       - include: '#keyword'
-      - include: '#number'
       - include: '#comment'
 
   direct_noun_defn:
@@ -110,11 +109,11 @@ repository:
       - include: '#direct_noun_defn'
       - include: '#direct_defn'
       - include: '#explicit_arg'
+      - include: '#number'
       - include: '#operator'
       - include: '#copula'
       - include: '#string'
       - include: '#keyword'
-      - include: '#number'
       - include: '#comment'
 
   modifier_explicit_defn:
@@ -132,11 +131,11 @@ repository:
       - include: '#direct_defn'
       - include: '#explicit_arg'
       - include: '#explicit_operand'
+      - include: '#number'
       - include: '#operator'
       - include: '#copula'
       - include: '#string'
       - include: '#keyword'
-      - include: '#number'
       - include: '#comment'
 
   explicit_string_defn:
@@ -189,7 +188,7 @@ repository:
     patterns:
     - comment: classic numbers
       name: constant.numeric.j
-      match: \b(_?\d+\.?\d*)(?![.:\w])
+      match: \b(?<!\.)(_\.\d+|_?\d+\.?\d*)(?![.:\w])
     - comment: special numbers (angles, exponent, complex, rational, extended)
       name: constant.numeric.j
       match: \b(_?\d+\.?\d*)(ar|ad|[ejprx])(_?\d*\.?\w*)(?![.:\w])
