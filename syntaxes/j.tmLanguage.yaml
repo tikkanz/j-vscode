@@ -223,7 +223,7 @@ repository:
       match: (([\/\\]\.)|([~\/\\}]))(?![.:])
     - comment: letters with inflection
       name: keyword.operator.conjunction.j
-      match: \b(([dDHT]\.)|([DLS]:))(?![.:])
+      match: \b(([HT]\.)|([LS]:))(?![.:])
     - comment: 'symbols with double inflection, . or : inflection or no inflection'
       name: keyword.operator.conjunction.j
       match: ((&\.:)|([&@!;]\.)|([&@!`^]:)|([&@`"]))(?![.:])
