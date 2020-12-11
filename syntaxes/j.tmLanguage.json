@@ -14,18 +14,6 @@
       "include": "#direct_defn"
     },
     {
-      "include": "#operator"
-    },
-    {
-      "include": "#copula"
-    },
-    {
-      "include": "#string"
-    },
-    {
-      "include": "#bracket"
-    },
-    {
       "include": "#explicit_defn"
     },
     {
@@ -39,6 +27,15 @@
     },
     {
       "include": "#number"
+    },
+    {
+      "include": "#operator"
+    },
+    {
+      "include": "#copula"
+    },
+    {
+      "include": "#string"
     },
     {
       "include": "#note"
@@ -75,14 +72,6 @@
               "name": "punctuation.definition.string.end.j"
             }
           }
-        }
-      ]
-    },
-    "bracket": {
-      "patterns": [
-        {
-          "name": "meta.bracket.j",
-          "match": "(?:\\(|\\)|,)(?!('|(?:\\.'))*\\.?')"
         }
       ]
     },
@@ -148,6 +137,9 @@
               "include": "#explicit_operand"
             },
             {
+              "include": "#number"
+            },
+            {
               "include": "#operator"
             },
             {
@@ -158,9 +150,6 @@
             },
             {
               "include": "#keyword"
-            },
-            {
-              "include": "#number"
             },
             {
               "include": "#comment"
@@ -217,6 +206,9 @@
               "include": "#explicit_arg"
             },
             {
+              "include": "#number"
+            },
+            {
               "include": "#operator"
             },
             {
@@ -227,9 +219,6 @@
             },
             {
               "include": "#keyword"
-            },
-            {
-              "include": "#number"
             },
             {
               "include": "#comment"
@@ -269,6 +258,9 @@
               "include": "#explicit_operand"
             },
             {
+              "include": "#number"
+            },
+            {
               "include": "#operator"
             },
             {
@@ -279,9 +271,6 @@
             },
             {
               "include": "#keyword"
-            },
-            {
-              "include": "#number"
             },
             {
               "include": "#comment"
@@ -378,8 +367,19 @@
     "number": {
       "patterns": [
         {
+          "comment": "classic numbers",
           "name": "constant.numeric.j",
-          "match": "\\b[_0-9][_0-9\\.a-zA-Z]*\\b(?![.:])"
+          "match": "\\b(?<!\\.)(_\\.\\d+|_?\\d+\\.?\\d*)(?![.:\\w])"
+        },
+        {
+          "comment": "special numbers (angles, exponent, complex, rational, extended)",
+          "name": "constant.numeric.j",
+          "match": "\\b(_?\\d+\\.?\\d*)(ar|ad|[ejprx])(_?\\d*\\.?\\w*)(?![.:\\w])"
+        },
+        {
+          "comment": "numbers base",
+          "name": "constant.numeric.j",
+          "match": "\\b(_?\\d+\\.?\\d*)(b)(_?\\w*\\.?\\w*)(?![.:\\w])"
         }
       ]
     },
@@ -392,7 +392,7 @@
         {
           "comment": "numbers with inflection and double inflections",
           "name": "keyword.operator.verb.j",
-          "match": "((_?[1-9]:)|(\\b0:)|({::))(?![.:])"
+          "match": "((\\b_?[1-9]:)|(\\b0:)|({::))(?![.:])"
         },
         {
           "comment": "letters with inflection",
@@ -407,7 +407,7 @@
         {
           "comment": "symbols with : inflection",
           "name": "keyword.operator.verb.j",
-          "match": "([<>\\+\\*\\-%$|,#{};~\"_/\\\\\\[]:)(?![.:])"
+          "match": "([<>\\+\\*\\-%$|,#{};~\"_\\/\\\\\\[]:)(?![.:])"
         },
         {
           "comment": "symbols with no inflection",
@@ -422,7 +422,7 @@
         {
           "comment": "symbols with and without . inflection",
           "name": "keyword.operator.adverb.j",
-          "match": "(([/\\\\]\\.)|([~/\\\\}]))(?![.:])"
+          "match": "(([\\/\\\\]\\.)|([~\\/\\\\}]))(?![.:])"
         },
         {
           "comment": "letters with inflection",
