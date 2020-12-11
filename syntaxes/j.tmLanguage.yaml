@@ -205,7 +205,7 @@ repository:
       match: ((\b_?[1-9]:)|(\b0:)|({::))(?![.:])
     - comment: letters with inflection
       name: keyword.operator.verb.j
-      match: \b((p\.\.)|([AcCeEiIjLopr]\.)|([ipqsux]:))(?![.:])
+      match: \b((p\.\.)|([AcCeEiIjLopruv]\.)|([ipqsux]:))(?![.:])
     - comment: symbols with . inflection
       name: keyword.operator.verb.j
       match: ([<>\+\*\-%$|,#{}^~"?]\.)(?![.:])
@@ -217,19 +217,19 @@ repository:
       match: ([<>\+\*\-%$|,#{!;^=?\[\]])(?![.:])
     - comment: letters with inflection
       name: keyword.operator.adverb.j
-      match: \b(([bfMt]\.)|(t:))(?![.:])
+      match: \b(([bfM]\.))(?![.:])
     - comment: symbols with and without . inflection
       name: keyword.operator.adverb.j
       match: (([\/\\]\.)|([~\/\\}]))(?![.:])
     - comment: letters with inflection
       name: keyword.operator.conjunction.j
-      match: \b(([dDHT]\.)|([DLS]:))(?![.:])
+      match: \b((H\.)|([LS]:))(?![.:])
     - comment: 'symbols with double inflection, . or : inflection or no inflection'
       name: keyword.operator.conjunction.j
       match: ((&\.:)|([&@!;]\.)|([&@!`^]:)|([&@`"]))(?![.:])
     - comment: '. or : with or without inflection (need leading whitespace)'
       name: keyword.operator.conjunction.j
-      match: (?<=\s)([.:][.:]|[.:])(?![.:])
+      match: (?<=\s)([:][.:]|[.:])(?![.:])
 
 firstLineMatch: ^#!.*\bjconsole\s*$
 foldingStartMarker: ^\s*(?:if|while|for|try)\.(?![.:])(?!.*\bend\b).*$
