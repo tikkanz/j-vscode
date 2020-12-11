@@ -217,13 +217,13 @@ repository:
       match: ([<>\+\*\-%$|,#{!;^=?\[\]])(?![.:])
     - comment: letters with inflection
       name: keyword.operator.adverb.j
-      match: \b(([bfMt]\.)|(t:))(?![.:])
+      match: \b(([bfM]\.))(?![.:])
     - comment: symbols with and without . inflection
       name: keyword.operator.adverb.j
       match: (([\/\\]\.)|([~\/\\}]))(?![.:])
     - comment: letters with inflection
       name: keyword.operator.conjunction.j
-      match: \b(([HT]\.)|([LS]:))(?![.:])
+      match: \b((H\.)|([LS]:))(?![.:])
     - comment: 'symbols with double inflection, . or : inflection or no inflection'
       name: keyword.operator.conjunction.j
       match: ((&\.:)|([&@!;]\.)|([&@!`^]:)|([&@`"]))(?![.:])
