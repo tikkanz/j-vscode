@@ -352,7 +352,7 @@
         {
           "comment": "classic numbers",
           "name": "constant.numeric.j",
-          "match": "\\b(?<!\\.)(_\\.\\d+|_?\\d+\\.?\\d*)(?![.:\\w])"
+          "match": "\\b(?<! \\.)(_\\.\\d+|_?\\d+\\.?\\d*)(?![.:\\w])"
         },
         {
           "comment": "special numbers (angles, exponent, complex, rational, extended)",
