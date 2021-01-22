@@ -58,23 +58,6 @@
         }
       ]
     },
-    "string": {
-      "patterns": [
-        {
-          "comment": "single line string",
-          "name": "string.quoted.single.j",
-          "match": "(')[^']*(?:''[^']*)*(')",
-          "captures": {
-            "1": {
-              "name": "punctuation.definition.string.begin.j"
-            },
-            "2": {
-              "name": "punctuation.definition.string.end.j"
-            }
-          }
-        }
-      ]
-    },
     "copula": {
       "patterns": [
         {
@@ -85,24 +68,6 @@
         {
           "name": "copula.local.j",
           "match": "=\\."
-        }
-      ]
-    },
-    "explicit_arg": {
-      "patterns": [
-        {
-          "comment": "argument identifiers within explicit definition blocks",
-          "name": "variable.parameter.j",
-          "match": "\\b[xy](?![\\w.:])"
-        }
-      ]
-    },
-    "explicit_operand": {
-      "patterns": [
-        {
-          "comment": "operand identifiers within modifier explicit definition blocks",
-          "name": "variable.parameter.j",
-          "match": "\\b[nmuv](?![\\w.:])"
         }
       ]
     },
@@ -178,6 +143,15 @@
         }
       ]
     },
+    "explicit_arg": {
+      "patterns": [
+        {
+          "comment": "argument identifiers within explicit definition blocks",
+          "name": "variable.parameter.j",
+          "match": "\\b[xy](?![\\w.:])"
+        }
+      ]
+    },
     "explicit_defn": {
       "patterns": [
         {
@@ -224,6 +198,56 @@
               "include": "#comment"
             }
           ]
+        }
+      ]
+    },
+    "explicit_operand": {
+      "patterns": [
+        {
+          "comment": "operand identifiers within modifier explicit definition blocks",
+          "name": "variable.parameter.j",
+          "match": "\\b[nmuv](?![\\w.:])"
+        }
+      ]
+    },
+    "explicit_string_defn": {
+      "patterns": [
+        {
+          "comment": "explicit string definition of verb or modifier",
+          "name": "definition.explicit.string.j",
+          "match": "\\b(([1-4]|adverb|conjunction|verb|monad|dyad)\\s+(:|def))\\s*((')[^']*(?:''[^']*)*('))",
+          "captures": {
+            "1": {
+              "name": "punctuation.definition.explicit.begin.j"
+            },
+            "4": {
+              "name": "string.quoted.single.j"
+            }
+          }
+        }
+      ]
+    },
+    "keyword": {
+      "patterns": [
+        {
+          "name": "keyword.control.j",
+          "match": "\\b(if|do|else|elseif|for|select|case|fcase)\\.(?![.:])"
+        },
+        {
+          "name": "keyword.control.j",
+          "match": "\\b(assert|break|continue|return|while|whilst)\\.(?![.:])"
+        },
+        {
+          "name": "keyword.control.j",
+          "match": "\\b(throw|try|catch|catchd|catcht)\\.(?![.:])"
+        },
+        {
+          "name": "keyword.control.j",
+          "match": "\\b(for_[A-Za-z][A-Za-z_0-9]*|goto_[A-Za-z][A-Za-z_0-9]*|label_[A-Za-z][A-Za-z_0-9]*)\\.(?![.:])"
+        },
+        {
+          "name": "keyword.control.end.j",
+          "match": "\\bend\\.(?![.:])"
         }
       ]
     },
@@ -276,47 +300,6 @@
               "include": "#comment"
             }
           ]
-        }
-      ]
-    },
-    "explicit_string_defn": {
-      "patterns": [
-        {
-          "comment": "explicit string definition of verb or modifier",
-          "name": "definition.explicit.string.j",
-          "match": "\\b(([1-4]|adverb|conjunction|verb|monad|dyad)\\s+(:|def))\\s*((')[^']*(?:''[^']*)*('))",
-          "captures": {
-            "1": {
-              "name": "punctuation.definition.explicit.begin.j"
-            },
-            "4": {
-              "name": "string.quoted.single.j"
-            }
-          }
-        }
-      ]
-    },
-    "keyword": {
-      "patterns": [
-        {
-          "name": "keyword.control.j",
-          "match": "\\b(if|do|else|elseif|for|select|case|fcase)\\.(?![.:])"
-        },
-        {
-          "name": "keyword.control.j",
-          "match": "\\b(assert|break|continue|return|while|whilst)\\.(?![.:])"
-        },
-        {
-          "name": "keyword.control.j",
-          "match": "\\b(throw|try|catch|catchd|catcht)\\.(?![.:])"
-        },
-        {
-          "name": "keyword.control.j",
-          "match": "\\b(for_[A-Za-z][A-Za-z_0-9]*|goto_[A-Za-z][A-Za-z_0-9]*|label_[A-Za-z][A-Za-z_0-9]*)\\.(?![.:])"
-        },
-        {
-          "name": "keyword.control.end.j",
-          "match": "\\bend\\.(?![.:])"
         }
       ]
     },
@@ -438,6 +421,23 @@
           "comment": ". or : with or without inflection (need leading whitespace)",
           "name": "keyword.operator.conjunction.j",
           "match": "(?<=\\s)([:][.:]|[.:])(?![.:])"
+        }
+      ]
+    },
+    "string": {
+      "patterns": [
+        {
+          "comment": "single line string",
+          "name": "string.quoted.single.j",
+          "match": "(')[^']*(?:''[^']*)*(')",
+          "captures": {
+            "1": {
+              "name": "punctuation.definition.string.begin.j"
+            },
+            "2": {
+              "name": "punctuation.definition.string.end.j"
+            }
+          }
         }
       ]
     }

@@ -33,15 +33,6 @@ repository:
       captures:
         1: {name: punctuation.definition.comment.begin.j}
 
-  string:
-    patterns:
-    - comment: single line string
-      name: string.quoted.single.j
-      match: (')[^']*(?:''[^']*)*(')
-      captures:
-        1: {name: punctuation.definition.string.begin.j}
-        2: {name: punctuation.definition.string.end.j}
-
   copula:
     patterns:
     - comment: assignment operators
@@ -49,18 +40,6 @@ repository:
       match: '=:'
     - name: copula.local.j
       match: =\.
-
-  explicit_arg:
-    patterns:
-    - comment: argument identifiers within explicit definition blocks
-      name: variable.parameter.j
-      match: \b[xy](?![\w.:])
-
-  explicit_operand:
-    patterns:
-    - comment: operand identifiers within modifier explicit definition blocks
-      name: variable.parameter.j
-      match: \b[nmuv](?![\w.:])
 
   direct_defn:
     patterns:
@@ -95,6 +74,12 @@ repository:
       endCaptures:
         0: {name: punctuation.definition.explicit.end.j}
 
+  explicit_arg:
+    patterns:
+    - comment: argument identifiers within explicit definition blocks
+      name: variable.parameter.j
+      match: \b[xy](?![\w.:])
+
   explicit_defn:
     patterns:
     - comment: explicit definition of a verb
@@ -116,27 +101,11 @@ repository:
       - include: '#keyword'
       - include: '#comment'
 
-  modifier_explicit_defn:
+  explicit_operand:
     patterns:
-    - comment: explicit definition of a modifier (adverb/conjunction)
-      name: definition.explicit.block.j
-      begin: \b([12]|adverb|conjunction)\s+(:\s*0|define)\b
-      beginCaptures:
-        0: {name: punctuation.definition.explicit.begin.j}
-      end: ^\s*\)\s*\n
-      endCaptures:
-        0: {name: punctuation.definition.explicit.end.j}
-      patterns:
-      - include: '#direct_noun_defn'
-      - include: '#direct_defn'
-      - include: '#explicit_arg'
-      - include: '#explicit_operand'
-      - include: '#number'
-      - include: '#operator'
-      - include: '#copula'
-      - include: '#string'
-      - include: '#keyword'
-      - include: '#comment'
+    - comment: operand identifiers within modifier explicit definition blocks
+      name: variable.parameter.j
+      match: \b[nmuv](?![\w.:])
 
   explicit_string_defn:
     patterns:
@@ -159,6 +128,28 @@ repository:
       match: \b(for_[A-Za-z][A-Za-z_0-9]*|goto_[A-Za-z][A-Za-z_0-9]*|label_[A-Za-z][A-Za-z_0-9]*)\.(?![.:])
     - name: keyword.control.end.j
       match: \bend\.(?![.:])
+
+  modifier_explicit_defn:
+    patterns:
+    - comment: explicit definition of a modifier (adverb/conjunction)
+      name: definition.explicit.block.j
+      begin: \b([12]|adverb|conjunction)\s+(:\s*0|define)\b
+      beginCaptures:
+        0: {name: punctuation.definition.explicit.begin.j}
+      end: ^\s*\)\s*\n
+      endCaptures:
+        0: {name: punctuation.definition.explicit.end.j}
+      patterns:
+      - include: '#direct_noun_defn'
+      - include: '#direct_defn'
+      - include: '#explicit_arg'
+      - include: '#explicit_operand'
+      - include: '#number'
+      - include: '#operator'
+      - include: '#copula'
+      - include: '#string'
+      - include: '#keyword'
+      - include: '#comment'
 
   note:
     patterns:
@@ -230,6 +221,15 @@ repository:
     - comment: '. or : with or without inflection (need leading whitespace)'
       name: keyword.operator.conjunction.j
       match: (?<=\s)([:][.:]|[.:])(?![.:])
+
+        string:
+    patterns:
+    - comment: single line string
+      name: string.quoted.single.j
+      match: (')[^']*(?:''[^']*)*(')
+      captures:
+        1: {name: punctuation.definition.string.begin.j}
+        2: {name: punctuation.definition.string.end.j}
 
 firstLineMatch: ^#!.*\bjconsole\s*$
 foldingStartMarker: ^\s*(?:if|while|for|try)\.(?![.:])(?!.*\bend\b).*$
