@@ -1,5 +1,9 @@
 # Change Log
 All notable changes to the J VSCode extension will be documented in this file.
+## [0.7.1] - 2020-01-23
+
+### Changed
+- Fix to numeric highlighting
 
 ## [0.7.0] - 2020-12-11
 
