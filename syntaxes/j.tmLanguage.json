@@ -26,6 +26,9 @@
       "include": "#noun_defn"
     },
     {
+      "include": "#bracket"
+    },
+    {
       "include": "#number"
     },
     {
@@ -45,6 +48,14 @@
     }
   ],
   "repository": {
+    "bracket": {
+      "patterns": [
+        {
+          "name": "meta.bracket.j",
+          "match": "(\\(|\\))"
+        }
+      ]
+    },
     "comment": {
       "patterns": [
         {
@@ -100,6 +111,9 @@
             },
             {
               "include": "#explicit_operand"
+            },
+            {
+              "include": "#bracket"
             },
             {
               "include": "#number"
@@ -178,6 +192,9 @@
             },
             {
               "include": "#explicit_arg"
+            },
+            {
+              "include": "#bracket"
             },
             {
               "include": "#number"
@@ -280,6 +297,9 @@
             },
             {
               "include": "#explicit_operand"
+            },
+            {
+              "include": "#bracket"
             },
             {
               "include": "#number"
