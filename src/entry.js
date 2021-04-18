@@ -78,12 +78,12 @@ function runline(e, advance) {
  let res = readentry(e);
  let pos = res[0];
  let txt = res[1];
- terminal.sendText(txt, txt[txt.length - 1] !== '\n');
+ sendterm(txt);
  if (advance)
   movecursor(pos - lsel[0]);
 }
 
 // ---------------------------------------------------------------------
 function sendterm(txt) {
- terminal.sendText(txt, txt[txt.length - 1] !== '\n');
+ terminal.sendText('\u0015' + txt, !txt.endsWith('\n'));
 }
