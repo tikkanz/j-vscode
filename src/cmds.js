@@ -3,15 +3,15 @@
 // ---------------------------------------------------------------------
 // ctrl L loads current file in terminal
 function loadScript(e) {
- load(e, false);
+  load(e, false);
 }
 
 // ---------------------------------------------------------------------
 function loadDisplayScript(e) {
- load(e, true);
+  load(e, true);
 }
 
 // ---------------------------------------------------------------------
 function load(e, show) {
- sendterm("load" + (show ? "d" : "") + " '" + e.document.fileName + "'");
+  sendterm("load" + (show ? "d" : "") + " '" + e.document.fileName + "'");
 }
