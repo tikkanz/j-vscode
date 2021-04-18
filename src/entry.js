@@ -8,7 +8,7 @@ function executeSelection(e) {
   if (!e.selection) return;
   getselections(e);
   let txt;
-  if ((lsel[0] === lsel[1]) && (csel[0] !== csel[1]))
+  if ((lsel[0] !== lsel[1]) || (csel[0] !== csel[1]))
     sendterm(e.document.getText(e.selection));
 }
 
