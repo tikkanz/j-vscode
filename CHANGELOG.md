@@ -1,5 +1,9 @@
 # Change Log
 All notable changes to the J VSCode extension will be documented in this file.
+## [0.7.3] - 2021-04-19
+
+### Fixed
+- Clear Terminal cmdline before sending text to it
 ## [0.7.2] - 2021-02-12
 
 ### Added
