@@ -126,6 +126,7 @@
     },
     "devDependencies": {
         "gulp": "^4.0.2",
-        "gulp-concat": "^2.6.1"
-    }
+        "gulp-concat": "^2.6.1",
+        "yargs-parser": ">=5.0.0-security.0"
+    },
 }
