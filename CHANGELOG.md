@@ -1,5 +1,10 @@
 # Change Log
 All notable changes to the J VSCode extension will be documented in this file.
+## [0.7.4] - 2021-04-26
+
+### Fixed
+- Sending text to J Windows Terminal
+
 ## [0.7.3] - 2021-04-19
 
 ### Fixed
