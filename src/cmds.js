@@ -15,3 +15,4 @@ function loadDisplayScript(e) {
 function load(e, show) {
   sendterm("load" + (show ? "d" : "") + " '" + e.document.fileName + "'");
 }
+

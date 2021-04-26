@@ -30,3 +30,4 @@ function ismultiline(t) {
 function splitblankJ(s) {
   return s.match(/(?:[^\s']+|'[^']*')+/g);
 }
+
