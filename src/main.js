@@ -9,6 +9,7 @@ function activate(context) {
   const config = vscode.workspace.getConfiguration('j');
   const terminalName = 'Jconsole';
   const terminalCmd = config.executablePath;
+  isWinExe = terminalCmd.endsWith('.exe');
 
   const createTerminal = () => {
     terminal = vscode.window.createTerminal(terminalName, terminalCmd);

@@ -85,5 +85,8 @@ function runline(e, advance) {
 
 // ---------------------------------------------------------------------
 function sendterm(txt) {
-  terminal.sendText('\u0015' + txt, !txt.endsWith('\n'));
+  let clearline = '\u0015'
+  if (isWinExe)
+    clearline = '';
+  terminal.sendText(clearline + txt, !txt.endsWith('\n'));
 }

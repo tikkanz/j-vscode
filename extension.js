@@ -9,6 +9,7 @@ function activate(context) {
   const config = vscode.workspace.getConfiguration('j');
   const terminalName = 'Jconsole';
   const terminalCmd = config.executablePath;
+  isWinExe = terminalCmd.endsWith('.exe');
 
   const createTerminal = () => {
     terminal = vscode.window.createTerminal(terminalName, terminalCmd);
@@ -181,5 +182,8 @@ function runline(e, advance) {
 
 // ---------------------------------------------------------------------
 function sendterm(txt) {
-  terminal.sendText('\u0015' + txt, !txt.endsWith('\n'));
+  let clearline = '\u0015'
+  if (isWinExe)
+    clearline = '';
+  terminal.sendText(clearline + txt, !txt.endsWith('\n'));
 }
