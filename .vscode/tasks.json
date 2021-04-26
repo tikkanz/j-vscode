@@ -3,8 +3,13 @@
 	"tasks": [
 		{
 			"type": "shell",
-			"command": "cat ${workspaceFolder}/src/main.js ${workspaceFolder}/src/util.js ${workspaceFolder}/src/cmds.js ${workspaceFolder}/src/entry.js > ${workspaceFolder}/extension.js",
-			"label": "bash: build",
+			"windows":{
+				"command": "Get-Content -Raw ${workspaceFolder}/src/main.js, ${workspaceFolder}/src/util.js, ${workspaceFolder}/src/cmds.js, ${workspaceFolder}/src/entry.js | Set-Content -NoNewLine ${workspaceFolder}/extension.js"
+			},
+			"linux":{
+				"command": "cat ${workspaceFolder}/src/main.js ${workspaceFolder}/src/util.js ${workspaceFolder}/src/cmds.js ${workspaceFolder}/src/entry.js > ${workspaceFolder}/extension.js",
+			},
+			"label": "shell: build",
 			"group": {
 				"kind": "build",
 				"isDefault": true
