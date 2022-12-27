@@ -1,5 +1,8 @@
 # Change Log
 All notable changes to the J VSCode extension will be documented in this file.
+## [0.8.0] - 2022-12-27
+### Chore
+- Convert JavaScript to TypeScript
 ## [0.7.4] - 2021-04-26
 
 ### Fixed
