@@ -79,8 +79,8 @@
                 "title": "J: Execute Line and Advance"
             },
             {
-                "command": "language-j.createTerminal",
-                "title": "J: Create JConsole Terminal"
+                "command": "language-j.startTerminal",
+                "title": "J: Start new JConsole Terminal"
             }
         ],
         "keybindings": [
@@ -115,7 +115,7 @@
                 "when": "editorTextFocus && editorLangId == 'j'"
             },
             {
-                "command": "language-j.createTerminal",
+                "command": "language-j.startTerminal",
                 "key": "ctrl+shift+J",
                 "mac": "cmd+shift+J",
                 "when": "editorTextFocus && editorLangId == 'j'"

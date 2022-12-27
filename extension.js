@@ -5,7 +5,7 @@ const vscode_1 = require("vscode");
 let terminal;
 function activate(context) {
     const cmds = [
-        ['language-j.createTerminal', createTerminal],
+        ['language-j.startTerminal', startTerminal],
         ['language-j.loadScript', loadScript],
         ['language-j.loadDisplayScript', loadDisplayScript],
         ['language-j.executeSelection', executeSelection],
@@ -23,20 +23,49 @@ function deactivate(context) {
     }
 }
 exports.deactivate = deactivate;
+function createTerminal() {
+    const config = vscode_1.workspace.getConfiguration('j');
+    return vscode_1.window.createTerminal({
+        name: "Jconsole", shellPath: config.executablePath
+    });
+}
+vscode_1.window.onDidChangeActiveTerminal(nextTerminal => {
+    if (nextTerminal === undefined) {
+        return;
+    }
+    if (nextTerminal.name == "Jconsole") {
+        terminal = nextTerminal;
+    }
+    else {
+        const jTerminals = vscode_1.window.terminals.filter(t => t.name == "Jconsole");
+        terminal = jTerminals.length > 0 ? jTerminals[0] : null;
+    }
+});
+function getTerminal() {
+    if (terminal === null || terminal.exitStatus != undefined) {
+        terminal = createTerminal();
+    }
+    terminal.show(true);
+}
+function startTerminal() {
+    terminal = createTerminal();
+    terminal.show(false);
+}
 function loadScript(editor, _) {
-    createTerminal();
+    getTerminal();
     terminal.sendText(`load '${editor.document.fileName}'`);
 }
 function loadDisplayScript(editor, _) {
-    createTerminal();
+    getTerminal();
     terminal.sendText(`loadd '${editor.document.fileName}'`);
 }
 function executeSelection(editor, _) {
+    getTerminal();
     const text = editor.document.getText(editor.selection);
     terminal.sendText(text, !text.endsWith('\n'));
 }
 function executeLine(editor, _) {
-    createTerminal();
+    getTerminal();
     const text = getExecutionText(editor);
     console.log(text);
     terminal.sendText(text, !text.endsWith('\n'));
@@ -44,15 +73,6 @@ function executeLine(editor, _) {
 function executeLineAdvance(editor, edit) {
     executeLine(editor, edit);
     vscode_1.commands.executeCommand('cursorMove', { to: "down", by: "wrappedLine" });
-}
-function createTerminal() {
-    if (terminal == null || terminal.exitStatus != undefined) {
-        const config = vscode_1.workspace.getConfiguration('j');
-        terminal = vscode_1.window.createTerminal({
-            name: "Jconsole", shellPath: config.executablePath
-        });
-        terminal.show();
-    }
 }
 function isMultilineStart(text) {
     const regex = /^.*\b([01234]|13|noun|adverb|conjunction|verb|monad|dyad)\s+(:\s*0|define)\b.*$/;

@@ -6,7 +6,7 @@ let terminal: Terminal;
 
 export function activate(context: ExtensionContext) {
     const cmds: [string, Cmd][] = [
-        ['language-j.createTerminal', createTerminal],
+        ['language-j.startTerminal', startTerminal],
         ['language-j.loadScript', loadScript],
         ['language-j.loadDisplayScript', loadDisplayScript],
         ['language-j.executeSelection', executeSelection],
@@ -23,21 +23,54 @@ export function deactivate(context: ExtensionContext) {
     if (terminal != null) { terminal.dispose() }
 }
 
+function createTerminal(): Terminal {
+    const config = workspace.getConfiguration('j')
+
+    return window.createTerminal({
+        name: "Jconsole", shellPath: config.executablePath
+    });
+}
+
+window.onDidChangeActiveTerminal(nextTerminal => {
+    if (nextTerminal === undefined) {return}
+    if (nextTerminal.name == "Jconsole"){
+        terminal = nextTerminal
+    } else {
+        const jTerminals = window.terminals.filter(t=>t.name=="Jconsole")
+        terminal = jTerminals.length > 0 ? jTerminals[0] : null
+    }
+})
+
+function getTerminal() {
+    if (terminal === null || terminal.exitStatus != undefined) {
+        terminal = createTerminal()
+    }
+    terminal.show(true)
+}
+
+function startTerminal() {
+    terminal = createTerminal();
+    terminal.show(false)
+}
+
 function loadScript(editor: TextEditor, _: TextEditorEdit) {
-    createTerminal(); terminal.sendText(`load '${editor.document.fileName}'`)
+    getTerminal()
+    terminal.sendText(`load '${editor.document.fileName}'`)
 }
 
 function loadDisplayScript(editor: TextEditor, _: TextEditorEdit) {
-    createTerminal(); terminal.sendText(`loadd '${editor.document.fileName}'`)
+    getTerminal()
+    terminal.sendText(`loadd '${editor.document.fileName}'`)
 }
 
 function executeSelection(editor: TextEditor, _: TextEditorEdit) {
+    getTerminal()
     const text = editor.document.getText(editor.selection)
     terminal.sendText(text, !text.endsWith('\n'))
 }
 
 function executeLine(editor: TextEditor, _: TextEditorEdit) {
-    createTerminal()
+    getTerminal()
 
     const text = getExecutionText(editor)
     console.log(text)
@@ -46,18 +79,6 @@ function executeLine(editor: TextEditor, _: TextEditorEdit) {
 function executeLineAdvance(editor: TextEditor, edit: TextEditorEdit) {
     executeLine(editor, edit)
     commands.executeCommand('cursorMove', { to: "down", by: "wrappedLine" })
-}
-
-
-function createTerminal() {
-    if (terminal == null || terminal.exitStatus != undefined) {
-        const config = workspace.getConfiguration('j');
-
-        terminal = window.createTerminal({
-            name: "Jconsole", shellPath: config.executablePath
-        });
-        terminal.show();
-    }
 }
 
 function isMultilineStart(text: string): boolean {
