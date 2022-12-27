@@ -2,10 +2,10 @@
     "name": "language-j",
     "displayName": "J",
     "description": "J Language Support",
-    "version": "0.7.4",
+    "version": "0.8.0",
     "publisher": "tikkanz",
     "engines": {
-        "vscode": "^1.19.0"
+        "vscode": "^1.66.0"
     },
     "bugs": {
         "url": "https://github.com/tikkanz/j-vscode/issues"
@@ -22,7 +22,7 @@
     "activationEvents": [
         "onLanguage:j"
     ],
-    "main": "./extension",
+    "main": "./extension.js",
     "contributes": {
         "languages": [
             {
@@ -124,5 +124,10 @@
             }
         }
     },
-    "devDependencies": {}
+    "devDependencies": {
+        "@types/node": "^8.10.66",
+        "@types/vscode": "^1.66.0",
+        "tslint": "^5.16.0",
+        "typescript": "^4.9.4"
+    }
 }
