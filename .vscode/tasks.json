@@ -3,11 +3,11 @@
 	"tasks": [
 		{
 			"type": "shell",
-			"windows":{
+			"windows": {
 				"command": "Get-Content -Raw ${workspaceFolder}/src/main.js, ${workspaceFolder}/src/util.js, ${workspaceFolder}/src/cmds.js, ${workspaceFolder}/src/entry.js | Set-Content -NoNewLine ${workspaceFolder}/extension.js"
 			},
-			"linux":{
-				"command": "cat ${workspaceFolder}/src/main.js ${workspaceFolder}/src/util.js ${workspaceFolder}/src/cmds.js ${workspaceFolder}/src/entry.js > ${workspaceFolder}/extension.js",
+			"linux": {
+				"command": "cat ${workspaceFolder}/src/main.js ${workspaceFolder}/src/util.js ${workspaceFolder}/src/cmds.js ${workspaceFolder}/src/entry.js > ${workspaceFolder}/extension.js"
 			},
 			"label": "shell: build",
 			"group": {
@@ -15,5 +15,14 @@
 				"isDefault": true
 			}
 		},
+		{
+			"type": "typescript",
+			"tsconfig": "tsconfig.json",
+			"problemMatcher": [
+				"$tsc"
+			],
+			"group": "build",
+			"label": "tsc: build - tsconfig.json"
+		}
 	]
 }
