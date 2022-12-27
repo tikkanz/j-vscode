@@ -1,6 +1,6 @@
-import {Terminal, TextDocument, TextEditor, ExtensionContext, TextEditorEdit, commands, workspace, window } from 'vscode';
+import { Terminal, TextEditor, ExtensionContext, TextEditorEdit, commands, workspace, window } from 'vscode';
 
-type Cmd = (textEditor: TextEditor, edit: TextEditorEdit, ...args: any[]) => void
+type Cmd = (editor: TextEditor, edit: TextEditorEdit, ...args: any[]) => void
 
 let terminal: Terminal;
 
@@ -14,39 +14,38 @@ export function activate(context: ExtensionContext) {
         ['language-j.executeLineAdvance', executeLineAdvance]
     ];
 
-    // cmds.forEach(  )
-    for(const [n, f] of cmds) {  commands.registerTextEditorCommand(n, f)}
+    for (const [n, f] of cmds) { commands.registerTextEditorCommand(n, f) }
 
-    // createTerminal();
 }
 
 
 export function deactivate(context: ExtensionContext) {
-    if (terminal != null) {terminal.dispose()}
+    if (terminal != null) { terminal.dispose() }
 }
 
-function loadScript(t: TextEditor, e: TextEditorEdit) {
-    createTerminal();  terminal.sendText(`load '${t.document.fileName}'`)
+function loadScript(editor: TextEditor, _: TextEditorEdit) {
+    createTerminal(); terminal.sendText(`load '${editor.document.fileName}'`)
 }
 
-function loadDisplayScript(t: TextEditor, e: TextEditorEdit) {
-    createTerminal();  terminal.sendText(`loadd '${t.document.fileName}'`)
+function loadDisplayScript(editor: TextEditor, _: TextEditorEdit) {
+    createTerminal(); terminal.sendText(`loadd '${editor.document.fileName}'`)
 }
 
-function executeSelection(t: TextEditor, e: TextEditorEdit) {
-    const text = t.document.getText(t.selection)
+function executeSelection(editor: TextEditor, _: TextEditorEdit) {
+    const text = editor.document.getText(editor.selection)
     terminal.sendText(text, !text.endsWith('\n'))
 }
 
-function executeLine(t: TextEditor, e: TextEditorEdit) {
+function executeLine(editor: TextEditor, _: TextEditorEdit) {
     createTerminal()
 
-    const text = getExecutionText(t)
+    const text = getExecutionText(editor)
+    console.log(text)
     terminal.sendText(text, !text.endsWith('\n'))
 }
-function executeLineAdvance(t: TextEditor, e: TextEditorEdit) {
-    executeLine(t, e)
-    commands.executeCommand('cursorMove', {to: "down",  by: "wrappedLine"})
+function executeLineAdvance(editor: TextEditor, edit: TextEditorEdit) {
+    executeLine(editor, edit)
+    commands.executeCommand('cursorMove', { to: "down", by: "wrappedLine" })
 }
 
 
@@ -55,32 +54,32 @@ function createTerminal() {
         const config = workspace.getConfiguration('j');
 
         terminal = window.createTerminal({
-            name: "Jconsole",  shellPath: config.executablePath
+            name: "Jconsole", shellPath: config.executablePath
         });
         terminal.show();
     }
 }
 
-function isMultiline(t: string): boolean {
+function isMultilineStart(text: string): boolean {
     const regex = /^.*\b([01234]|13|noun|adverb|conjunction|verb|monad|dyad)\s+(:\s*0|define)\b.*$/
-    return regex.test(t)
+    return regex.test(text)
 }
 
-function isMultilineEnd(t: string): boolean {
+function isMultilineEnd(text: string): boolean {
     const regex = /^\s*\)\s*$/
-    return regex.test(t)
+    return regex.test(text)
 }
 
 function getExecutionText(editor: TextEditor): string {
     let lineIndex = editor.selection.active.line
     let text = getLineText(editor, lineIndex)
 
-    if (!isMultiline(text)) {
+    if (!isMultilineStart(text)) {
         return text
     }
 
     while (lineIndex < editor.document.lineCount) {
-        let nextLine = getLineText(editor, lineIndex++)
+        let nextLine = getLineText(editor, ++lineIndex)
         text += `\n${nextLine}`
         if (isMultilineEnd(nextLine)) {
             return text
