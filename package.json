@@ -2,7 +2,7 @@
     "name": "language-j",
     "displayName": "J",
     "description": "J Language Support",
-    "version": "0.8.0",
+    "version": "0.8.1",
     "publisher": "tikkanz",
     "engines": {
         "vscode": "^1.66.0"
@@ -44,6 +44,19 @@
                 "path": "./syntaxes/j.tmLanguage.json"
             }
         ],
+        "configurationDefaults": {
+            "j.executablePath": "ijconsole",
+            "terminal.integrated.enablePersistentSessions": false,
+            "[j]": {
+                "editor.language.colorizedBracketPairs": [
+                    ["(", ")"]
+                ],
+                "editor.wordSeparators": " ,.:",
+                "editor.foldingStrategy": "auto",
+                "editor.tabCompletion": "on",
+                "editor.semanticHighlighting.enabled": false
+            }
+        },
         "commands": [
             {
                 "command": "language-j.executeSelection",
@@ -110,7 +123,7 @@
         ],
         "configuration": {
             "type": "object",
-            "title": "jrepl configuration",
+            "title": "J configuration",
             "properties": {
                 "j.executablePath": {
                     "type": [
