@@ -326,6 +326,7 @@
     "note": {
       "patterns": [
         {
+          "comment": "multi-line Note",
           "name": "comment.block.note.j",
           "begin": "^\\s*\\bNote\\b",
           "beginCaptures": {
@@ -341,7 +342,7 @@
           }
         },
         {
-          "comment": "dd ",
+          "comment": "single-line Note",
           "name": "comment.line.note.j",
           "match": "\\bNote\\b(?!\\s*\\=[:.])\\s*[\\'\\d].*$"
         }

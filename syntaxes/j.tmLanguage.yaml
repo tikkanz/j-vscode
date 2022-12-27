@@ -162,14 +162,15 @@ repository:
 
   note:
     patterns:
-    - name: comment.block.note.j
+    - comment: multi-line Note
+      name: comment.block.note.j
       begin: ^\s*\bNote\b
       beginCaptures:
         0: {name: punctuation.definition.comment.begin.j}
       end: ^\s*\)\s*\n
       endCaptures:
         0: {name: punctuation.definition.comment.end.j}
-    - comment: 'dd '
+    - comment: single-line Note
       name: comment.line.note.j
       match: \bNote\b(?!\s*\=[:.])\s*[\'\d].*$
 
@@ -234,6 +235,7 @@ repository:
   string:
     patterns:
     - comment: single line string
+      # handles escaped quotes & restricts scope to current line
       name: string.quoted.single.j
       match: (')[^']*(?:''[^']*)*(')
       captures:
