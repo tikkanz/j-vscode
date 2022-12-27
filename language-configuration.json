@@ -16,6 +16,7 @@
         { "open": "'", "close": "'", "notIn": ["string", "comment"] },
         { "open": "{{", "close": "}}" }
     ],
+    "autoCloseBefore": ",=) \n",
     // symbols that that can be used to surround a selection
     "surroundingPairs": [
         ["(", ")"],
