@@ -1,4 +1,13 @@
-import { Terminal, TextEditor, ExtensionContext, TextEditorEdit, commands, workspace, window } from 'vscode';
+import {
+    Terminal,
+    TextEditor,
+    ExtensionContext,
+    TextEditorEdit,
+    commands,
+    workspace,
+    window,
+    Position,
+} from 'vscode';
 
 type Cmd = (editor: TextEditor, edit: TextEditorEdit, ...args: any[]) => void
 
@@ -9,9 +18,8 @@ export function activate(context: ExtensionContext) {
         ['language-j.startTerminal', startTerminal],
         ['language-j.loadScript', loadScript],
         ['language-j.loadDisplayScript', loadDisplayScript],
-        ['language-j.executeSelection', executeSelection],
-        ['language-j.executeLine', executeLine],
-        ['language-j.executeLineAdvance', executeLineAdvance]
+        ['language-j.execute', execute],
+        ['language-j.executeAdvance', executeAdvance]
     ];
 
     for (const [n, f] of cmds) { commands.registerTextEditorCommand(n, f) }
@@ -32,11 +40,11 @@ function createTerminal(): Terminal {
 }
 
 window.onDidChangeActiveTerminal(nextTerminal => {
-    if (nextTerminal === undefined) {return}
-    if (nextTerminal.name == "Jconsole"){
+    if (nextTerminal === undefined) { return }
+    if (nextTerminal.name == "Jconsole") {
         terminal = nextTerminal
     } else {
-        const jTerminals = window.terminals.filter(t=>t.name=="Jconsole")
+        const jTerminals = window.terminals.filter(t => t.name == "Jconsole")
         terminal = jTerminals.length > 0 ? jTerminals[0] : null
     }
 })
@@ -63,22 +71,46 @@ function loadDisplayScript(editor: TextEditor, _: TextEditorEdit) {
     terminal.sendText(`loadd '${editor.document.fileName}'`)
 }
 
-function executeSelection(editor: TextEditor, _: TextEditorEdit) {
+function _execute(editor: TextEditor): Position {
+    let text = editor.document.getText(editor.selection)
+    let endPosition: Position
+    if (text.length === 0) {
+        endPosition = executeLine(editor)
+    } else {
+        endPosition = executeSelection(editor)
+    }
+    return endPosition
+}
+
+function execute(editor: TextEditor, _: TextEditorEdit) {
+    _execute(editor)
+}
+
+function executeAdvance(editor: TextEditor, _: TextEditorEdit) {
+    let endPosition = _execute(editor)
+    let offset = getNextNonBlankLineOffset(editor, endPosition)
+    commands.executeCommand('cursorMove', {
+        to: "down",
+        by: "wrappedLine",
+        value: offset
+    })
+    commands.executeCommand("cursorMove", {
+        to: "wrappedLineEnd"
+    })
+}
+
+function executeSelection(editor: TextEditor): Position {
     getTerminal()
     const text = editor.document.getText(editor.selection)
     terminal.sendText(text, !text.endsWith('\n'))
+    return editor.selection.end
 }
 
-function executeLine(editor: TextEditor, _: TextEditorEdit) {
+function executeLine(editor: TextEditor): Position {
     getTerminal()
-
-    const text = getExecutionText(editor)
-    console.log(text)
+    const [text, endPosition] = getExecutionText(editor)
     terminal.sendText(text, !text.endsWith('\n'))
-}
-function executeLineAdvance(editor: TextEditor, edit: TextEditorEdit) {
-    executeLine(editor, edit)
-    commands.executeCommand('cursorMove', { to: "down", by: "wrappedLine" })
+    return endPosition
 }
 
 function isMultilineStart(text: string): boolean {
@@ -91,19 +123,19 @@ function isMultilineEnd(text: string): boolean {
     return regex.test(text)
 }
 
-function getExecutionText(editor: TextEditor): string {
+function getExecutionText(editor: TextEditor): [string, Position] {
     let lineIndex = editor.selection.active.line
     let text = getLineText(editor, lineIndex)
 
     if (!isMultilineStart(text)) {
-        return text
+        return [text, editor.selection.active]
     }
 
     while (lineIndex < editor.document.lineCount) {
         let nextLine = getLineText(editor, ++lineIndex)
         text += `\n${nextLine}`
         if (isMultilineEnd(nextLine)) {
-            return text
+            return [text, new Position(lineIndex, nextLine.length)]
         }
     }
 
@@ -112,4 +144,13 @@ function getExecutionText(editor: TextEditor): string {
 
 function getLineText(editor: TextEditor, index: number): string {
     return editor.document.lineAt(index).text
+}
+
+
+function getNextNonBlankLineOffset(editor: TextEditor, endPosition: Position): number {
+    let lineIdx = 1 + endPosition.line;
+    while (lineIdx < editor.document.lineCount && getLineText(editor, lineIdx).trim().length === 0) {
+        lineIdx++;
+    }
+    return lineIdx - editor.selection.end.line
 }
