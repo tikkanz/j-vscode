@@ -9,7 +9,7 @@ import {
     Position,
 } from 'vscode'
 
-type Cmd = (editor: TextEditor, edit: TextEditorEdit, ...args: any[]) => void
+type Cmd = (editor: TextEditor) => void
 
 export function activate(context: ExtensionContext) {
     const cmds: [string, Cmd][] = [
@@ -60,21 +60,21 @@ function startTerminal() {
     terminal.show(false)
 }
 
-function loadScript(editor: TextEditor, _: TextEditorEdit) {
+function loadScript(editor: TextEditor) {
     getTerminal()
     terminal.sendText(`load '${editor.document.fileName}'`)
 }
 
-function loadDisplayScript(editor: TextEditor, _: TextEditorEdit) {
+function loadDisplayScript(editor: TextEditor) {
     getTerminal()
     terminal.sendText(`loadd '${editor.document.fileName}'`)
 }
 
-function execute(editor: TextEditor, _: TextEditorEdit) {
+function execute(editor: TextEditor) {
     _execute(editor)
 }
 
-function executeAdvance(editor: TextEditor, _: TextEditorEdit) {
+function executeAdvance(editor: TextEditor) {
     let endPosition = _execute(editor)
     let offset = getNextNonBlankLineOffset(editor, endPosition)
     commands.executeCommand('cursorMove', {

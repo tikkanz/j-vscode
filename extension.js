@@ -50,18 +50,18 @@ function startTerminal() {
     terminal = createTerminal();
     terminal.show(false);
 }
-function loadScript(editor, _) {
+function loadScript(editor) {
     getTerminal();
     terminal.sendText(`load '${editor.document.fileName}'`);
 }
-function loadDisplayScript(editor, _) {
+function loadDisplayScript(editor) {
     getTerminal();
     terminal.sendText(`loadd '${editor.document.fileName}'`);
 }
-function execute(editor, _) {
+function execute(editor) {
     _execute(editor);
 }
-function executeAdvance(editor, _) {
+function executeAdvance(editor) {
     let endPosition = _execute(editor);
     let offset = getNextNonBlankLineOffset(editor, endPosition);
     vscode_1.commands.executeCommand('cursorMove', {
