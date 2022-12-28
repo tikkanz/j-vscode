@@ -127,6 +127,11 @@
             }
         }
     },
+    "scripts": {
+        "vscode:prepublish": "npm run compile",
+        "compile": "tsc -p ./",
+        "watch": "tsc -watch -p ./"
+    },
     "devDependencies": {
         "@types/node": "^8.10.66",
         "@types/vscode": "^1.66.0",
