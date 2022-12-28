@@ -123,7 +123,7 @@ function getExecutionText(editor: TextEditor): [string, Position] {
 }
 
 function isMultilineStart(text: string): boolean {
-    const regex = /^.*\b([01234]|13|noun|adverb|conjunction|verb|monad|dyad\s+:\s*0|define)\b.*$|(\{\{)/
+    const regex = /(?<!NB\..*)\w*(([0-4]|13|noun|verb|conjunction|monad|adverb|dyad) +(: *0|define))|(\{\{)/
     return regex.test(text)
 }
 
