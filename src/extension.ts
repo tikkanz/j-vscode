@@ -89,7 +89,7 @@ function executeAdvance(editor: TextEditor) {
 
 function _execute(editor: TextEditor): Position {
     let [text, endPosition] = getExecutionText(editor)
-    
+
     getTerminal()
     terminal.sendText(text, !text.endsWith('\n'))
 
@@ -108,12 +108,14 @@ function getExecutionText(editor: TextEditor): [string, Position] {
             return [text, editor.selection.active]
         }
 
+        text = ""
         while (lineIndex < editor.document.lineCount) {
-            let nextLine = getLineText(editor, ++lineIndex)
+            let nextLine = getLineText(editor, lineIndex)
             text += `\n${nextLine}`
             if (isMultilineEnd(nextLine)) {
                 return [text, new Position(lineIndex, nextLine.length)]
             }
+            lineIndex++
         }
 
         throw new Error("Incomplete multiline definition!")
@@ -121,12 +123,12 @@ function getExecutionText(editor: TextEditor): [string, Position] {
 }
 
 function isMultilineStart(text: string): boolean {
-    const regex = /^.*\b([01234]|13|noun|adverb|conjunction|verb|monad|dyad)\s+(:\s*0|define)\b.*$/
+    const regex = /^.*\b([01234]|13|noun|adverb|conjunction|verb|monad|dyad\s+:\s*0|define)\b.*$|(\{\{)/
     return regex.test(text)
 }
 
 function isMultilineEnd(text: string): boolean {
-    const regex = /^\s*\)\s*$/
+    const regex = /(^\s*\)\s*$)|(\}\})/
     return regex.test(text)
 }
 

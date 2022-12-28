@@ -90,22 +90,26 @@ function getExecutionText(editor) {
         if (!isMultilineStart(text)) {
             return [text, editor.selection.active];
         }
+        text = "";
         while (lineIndex < editor.document.lineCount) {
-            let nextLine = getLineText(editor, ++lineIndex);
+            let nextLine = getLineText(editor, lineIndex);
             text += `\n${nextLine}`;
             if (isMultilineEnd(nextLine)) {
                 return [text, new vscode_1.Position(lineIndex, nextLine.length)];
             }
+            lineIndex++;
         }
         throw new Error("Incomplete multiline definition!");
     }
 }
 function isMultilineStart(text) {
-    const regex = /^.*\b([01234]|13|noun|adverb|conjunction|verb|monad|dyad)\s+(:\s*0|define)\b.*$/;
+    // const regex = /^.*\b([01234]|13|noun|adverb|conjunction|verb|monad|dyad)\s+(:\s*0|define)\b.*$/
+    const regex = /^.*\b([01234]|13|noun|adverb|conjunction|verb|monad|dyad\s+:\s*0|define)\b.*$|(\{\{)/;
     return regex.test(text);
 }
 function isMultilineEnd(text) {
-    const regex = /^\s*\)\s*$/;
+    // const regex = /^\s*\)\s*$/
+    const regex = /(^\s*\)\s*$)|(\}\})/;
     return regex.test(text);
 }
 function getNextNonBlankLineOffset(editor, endPosition) {
