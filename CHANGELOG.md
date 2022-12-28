@@ -1,5 +1,11 @@
 # Change Log
 All notable changes to the J VSCode extension will be documented in this file.
+## [0.9.0] - 2022-12-28
+### Enhancement
+- Streamlined terminal start behaviour
+- Combined Execute Selection and Execute Line commands
+### Fixed
+- Fixed regression in advancing to next non-blank line
 ## [0.8.1] - 2022-12-27
 ### Fixed
 - Fix multiline definition handling

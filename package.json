@@ -2,7 +2,7 @@
     "name": "language-j",
     "displayName": "J",
     "description": "J Language Support",
-    "version": "0.8.1",
+    "version": "0.9.0",
     "publisher": "tikkanz",
     "engines": {
         "vscode": "^1.66.0"
@@ -59,10 +59,6 @@
         },
         "commands": [
             {
-                "command": "language-j.executeSelection",
-                "title": "J: Execute Selection"
-            },
-            {
                 "command": "language-j.loadScript",
                 "title": "J: Load Script"
             },
@@ -71,25 +67,19 @@
                 "title": "J: Load and Display Script"
             },
             {
-                "command": "language-j.executeLine",
-                "title": "J: Execute Line"
+                "command": "language-j.execute",
+                "title": "J: Execute Line/Selection"
             },
             {
-                "command": "language-j.executeLineAdvance",
-                "title": "J: Execute Line and Advance"
+                "command": "language-j.executeAdvance",
+                "title": "J: Execute Line/Selection and Advance"
             },
             {
-                "command": "language-j.createTerminal",
-                "title": "J: Create JConsole Terminal"
+                "command": "language-j.startTerminal",
+                "title": "J: Start new JConsole Terminal"
             }
         ],
         "keybindings": [
-            {
-                "command": "language-j.executeSelection",
-                "key": "ctrl+E",
-                "mac": "cmd+E",
-                "when": "editorTextFocus && editorLangId == 'j'"
-            },
             {
                 "command": "language-j.loadScript",
                 "key": "ctrl+L",
@@ -103,19 +93,19 @@
                 "when": "editorTextFocus && editorLangId == 'j'"
             },
             {
-                "command": "language-j.executeLine",
+                "command": "language-j.execute",
                 "key": "ctrl+R",
                 "mac": "cmd+R",
                 "when": "editorTextFocus && editorLangId == 'j'"
             },
             {
-                "command": "language-j.executeLineAdvance",
+                "command": "language-j.executeAdvance",
                 "key": "ctrl+enter",
                 "mac": "cmd+enter",
                 "when": "editorTextFocus && editorLangId == 'j'"
             },
             {
-                "command": "language-j.createTerminal",
+                "command": "language-j.startTerminal",
                 "key": "ctrl+shift+J",
                 "mac": "cmd+shift+J",
                 "when": "editorTextFocus && editorLangId == 'j'"
@@ -123,14 +113,14 @@
         ],
         "configuration": {
             "type": "object",
-            "title": "J configuration",
+            "title": "J",
             "properties": {
                 "j.executablePath": {
                     "type": [
                         "string",
                         "null"
                     ],
-                    "default": null,
+                    "default": "jconsole",
                     "description": "Points to the jconsole executable.",
                     "scope": "window"
                 }

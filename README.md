@@ -25,15 +25,15 @@ To provide the J console,  make an entry in User Settings pointing to the jconso
 
 ## Integrated Terminal/Console
 
-When an `.ijs` script is open, the J console should show in the terminal window. To send code to the terminal, click on the script window to give it focus, and use the following commands from the Command Palette. Note that if the line is the first line of an explicit definition, then the entire explicit definition will be run.
+When one of the J commands from the Command Palete (see table) is run from an `.ijs` script, if no J console is running a new one will be created, the command will be executed in the terminal. Note that if the line to execute is the first line of an explicit definition, then the entire explicit definition will be run. The execution target is the most recently active Jconsole terminal.
 
-| Command Palette             | Description  |
-|-----------------------------|--------------|
-| J: Execute Line and Advance | Execute the line and advance to the next non-blank line |
-| J: Execute Line             | Execute the line without advancing |
-| J: Execute Selection        | Execute the selected text (must be a selection in a single line) |
-| J: Load Script              | load the script file |
-| J: Load and Display Script  | load the script file with display |
+| Command Palette                      | Description                                         |
+| ------------------------------------ | --------------------------------------------------- |
+| J: Execute Line/Selecton and Advance | Execute and advance to the next non-blank line      |
+| J: Execute Line/Selection            | Execute without advancing                           |
+| J: Load Script                       | load the script file                                |
+| J: Load and Display Script           | load the script file with display                   |
+| J: Create JConsole Terminal          | Manually start a new J Console (if none is running) |
 
 
 ## Release Notes
