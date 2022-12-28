@@ -1,5 +1,8 @@
 # Change Log
 All notable changes to the J VSCode extension will be documented in this file.
+## [0.9.3] - 2022-12-29
+### Fix
+- Fix regression in detecting start of multiline definitions 
 ## [0.9.2] - 2022-12-28
 ### Enhancement
 - Supports execution of multi-line direct definitions
