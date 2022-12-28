@@ -103,12 +103,10 @@ function getExecutionText(editor) {
     }
 }
 function isMultilineStart(text) {
-    // const regex = /^.*\b([01234]|13|noun|adverb|conjunction|verb|monad|dyad)\s+(:\s*0|define)\b.*$/
     const regex = /^.*\b([01234]|13|noun|adverb|conjunction|verb|monad|dyad\s+:\s*0|define)\b.*$|(\{\{)/;
     return regex.test(text);
 }
 function isMultilineEnd(text) {
-    // const regex = /^\s*\)\s*$/
     const regex = /(^\s*\)\s*$)|(\}\})/;
     return regex.test(text);
 }
