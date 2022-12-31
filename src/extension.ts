@@ -62,11 +62,13 @@ function startTerminal() {
 
 function loadScript(editor: TextEditor) {
     getTerminal()
+    editor.document.save()
     terminal.sendText(`load '${editor.document.fileName}'`)
 }
 
 function loadDisplayScript(editor: TextEditor) {
     getTerminal()
+    editor.document.save()
     terminal.sendText(`loadd '${editor.document.fileName}'`)
 }
 

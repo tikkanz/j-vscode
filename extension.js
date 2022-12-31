@@ -52,10 +52,12 @@ function startTerminal() {
 }
 function loadScript(editor) {
     getTerminal();
+    editor.document.save();
     terminal.sendText(`load '${editor.document.fileName}'`);
 }
 function loadDisplayScript(editor) {
     getTerminal();
+    editor.document.save();
     terminal.sendText(`loadd '${editor.document.fileName}'`);
 }
 function execute(editor) {
