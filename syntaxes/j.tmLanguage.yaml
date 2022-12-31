@@ -206,7 +206,7 @@ repository:
       match: ((\b_?[1-9]:)|(\b0:)|({::))(?![.:])
     - comment: letters with inflection
       name: keyword.operator.verb.j
-      match: \b((p\.\.)|([AcCeEiIjLopruv]\.)|([ipqsux]:))(?![.:])
+      match: \b((p\.\.)|([AcCeEiIjLoprTuv]\.)|([ipqsux]:))(?![.:])
     - comment: symbols with . inflection
       name: keyword.operator.verb.j
       match: ([<>\+\*\-%$|,#{}^~"?]\.)(?![.:])
@@ -221,10 +221,10 @@ repository:
       match: \b(([bfM]\.))(?![.:])
     - comment: symbols with and without . inflection
       name: keyword.operator.adverb.j
-      match: (([\/\\]\.)|([~\/\\}]))(?![.:])
+      match: (([\/\\]\.)|(\/\.\.)|([~\/\\}]))(?![.:])
     - comment: letters with inflection
       name: keyword.operator.conjunction.j
-      match: \b((H\.)|([LS]:))(?![.:])
+      match: \b(([Ht]\.)|([LS]:))(?![.:])
     - comment: 'symbols with double inflection, . or : inflection or no inflection'
       name: keyword.operator.conjunction.j
       match: ((&\.:)|([&@!;]\.)|([&@!`^]:)|([&@`"]))(?![.:])

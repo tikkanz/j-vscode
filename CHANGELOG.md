@@ -3,6 +3,7 @@ All notable changes to the J VSCode extension will be documented in this file.
 ## [unreleased] - 2022-12-31
 ### Enhancement
 - Save scripts before loading them to J terminal
+- Add syntax highlighting support for `/..`, `t.`, & `T.`
 ## [0.9.3] - 2022-12-29
 ### Fix
 - Fix regression in detecting start of multiline definitions 
