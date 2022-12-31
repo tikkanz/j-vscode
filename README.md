@@ -42,6 +42,6 @@ When a ``Load Script`` command is run, the script will be saved to disk prior to
 See the [Change Log](CHANGELOG.md) for release notes.
 
 -----------------------------------------------------------------------------------------------------------
-[VS Code]: (https://code.visualstudio.com)
+[VS Code]: https://code.visualstudio.com
 [J programming language]: https://www.jsoftware.com
 [VS Code Marketplace]: https://marketplace.visualstudio.com/items?itemName=tikkanz.language-j
