@@ -1,6 +1,6 @@
 # Change Log
 All notable changes to the J VSCode extension will be documented in this file.
-## [unreleased] - 2022-12-31
+## [0.9.4] - 2022-12-31
 ### Enhancement
 - Save scripts before loading them to J terminal
 - Add syntax highlighting support for `/..`, `t.`, & `T.`
