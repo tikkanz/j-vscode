@@ -2,7 +2,7 @@
     "name": "language-j",
     "displayName": "J",
     "description": "J Language Support",
-    "version": "0.9.4",
+    "version": "0.9.5",
     "publisher": "tikkanz",
     "engines": {
         "vscode": "^1.66.0"

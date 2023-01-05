@@ -1,5 +1,8 @@
 # Change Log
 All notable changes to the J VSCode extension will be documented in this file.
+## [0.9.5] - 2023-01-05
+### Fix
+- Fix regression not clearing Terminal cmdline before sending text to it
 ## [0.9.4] - 2022-12-31
 ### Enhancement
 - Save scripts before loading them to J terminal
