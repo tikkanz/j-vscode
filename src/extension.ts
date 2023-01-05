@@ -25,6 +25,7 @@ export function activate(context: ExtensionContext) {
 }
 
 let terminal: Terminal = null
+let isWinExe: boolean
 
 export function deactivate(context: ExtensionContext) {
     if (terminal != null) { terminal.dispose() }
@@ -33,6 +34,7 @@ export function deactivate(context: ExtensionContext) {
 function createTerminal(): Terminal {
     const config = workspace.getConfiguration('j')
 
+    isWinExe = config.executablePath.endsWith('.exe')
     return window.createTerminal({
         name: "Jconsole", shellPath: config.executablePath
     })
@@ -61,15 +63,13 @@ function startTerminal() {
 }
 
 function loadScript(editor: TextEditor) {
-    getTerminal()
     editor.document.save()
-    terminal.sendText(`load '${editor.document.fileName}'`)
+    sendTerminalText(`load '${editor.document.fileName}'`)
 }
 
 function loadDisplayScript(editor: TextEditor) {
-    getTerminal()
     editor.document.save()
-    terminal.sendText(`loadd '${editor.document.fileName}'`)
+    sendTerminalText(`loadd '${editor.document.fileName}'`)
 }
 
 function execute(editor: TextEditor) {
@@ -91,10 +91,7 @@ function executeAdvance(editor: TextEditor) {
 
 function _execute(editor: TextEditor): Position {
     let [text, endPosition] = getExecutionText(editor)
-
-    getTerminal()
-    terminal.sendText(text, !text.endsWith('\n'))
-
+    sendTerminalText(text)
     return endPosition
 }
 
@@ -145,3 +142,12 @@ function getNextNonBlankLineOffset(editor: TextEditor, endPosition: Position): n
 function getLineText(editor: TextEditor, index: number): string {
     return editor.document.lineAt(index).text
 }
+
+function sendTerminalText(txt: string) {
+    let clearline = '\u0015'
+    if (isWinExe) { clearline = '' }
+
+    getTerminal()
+    terminal.sendText(clearline + txt, !txt.endsWith('\n'));
+}
+

@@ -16,6 +16,7 @@ function activate(context) {
 }
 exports.activate = activate;
 let terminal = null;
+let isWinExe;
 function deactivate(context) {
     if (terminal != null) {
         terminal.dispose();
@@ -24,6 +25,7 @@ function deactivate(context) {
 exports.deactivate = deactivate;
 function createTerminal() {
     const config = vscode_1.workspace.getConfiguration('j');
+    isWinExe = config.executablePath.endsWith('.exe');
     return vscode_1.window.createTerminal({
         name: "Jconsole", shellPath: config.executablePath
     });
@@ -51,14 +53,12 @@ function startTerminal() {
     terminal.show(false);
 }
 function loadScript(editor) {
-    getTerminal();
     editor.document.save();
-    terminal.sendText(`load '${editor.document.fileName}'`);
+    sendTerminalText(`load '${editor.document.fileName}'`);
 }
 function loadDisplayScript(editor) {
-    getTerminal();
     editor.document.save();
-    terminal.sendText(`loadd '${editor.document.fileName}'`);
+    sendTerminalText(`loadd '${editor.document.fileName}'`);
 }
 function execute(editor) {
     _execute(editor);
@@ -77,8 +77,7 @@ function executeAdvance(editor) {
 }
 function _execute(editor) {
     let [text, endPosition] = getExecutionText(editor);
-    getTerminal();
-    terminal.sendText(text, !text.endsWith('\n'));
+    sendTerminalText(text);
     return endPosition;
 }
 function getExecutionText(editor) {
@@ -121,4 +120,12 @@ function getNextNonBlankLineOffset(editor, endPosition) {
 }
 function getLineText(editor, index) {
     return editor.document.lineAt(index).text;
+}
+function sendTerminalText(txt) {
+    let clearline = '\u0015';
+    if (isWinExe) {
+        clearline = '';
+    }
+    getTerminal();
+    terminal.sendText(clearline + txt, !txt.endsWith('\n'));
 }
