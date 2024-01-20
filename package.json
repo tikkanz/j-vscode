@@ -77,6 +77,10 @@
             {
                 "command": "language-j.startTerminal",
                 "title": "J: Start new JConsole Terminal"
+            },
+            {
+                "command": "language-j.openNuVoc",
+                "title": "J: Open NuVoc Help in Browser"
             }
         ],
         "keybindings": [

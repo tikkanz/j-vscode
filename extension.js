@@ -8,7 +8,8 @@ function activate(context) {
         ['language-j.loadScript', loadScript],
         ['language-j.loadDisplayScript', loadDisplayScript],
         ['language-j.execute', execute],
-        ['language-j.executeAdvance', executeAdvance]
+        ['language-j.executeAdvance', executeAdvance],
+        ['language-j.openNuVoc', openNuVoc]
     ];
     for (const [n, f] of cmds) {
         vscode_1.commands.registerTextEditorCommand(n, f);
@@ -128,4 +129,7 @@ function sendTerminalText(txt) {
     }
     getTerminal();
     terminal.sendText(clearline + txt, !txt.endsWith('\n'));
+}
+function openNuVoc(editor) {
+    vscode_1.env.openExternal(vscode_1.Uri.parse('https://code.jsoftware.com/wiki/NuVoc'));
 }
