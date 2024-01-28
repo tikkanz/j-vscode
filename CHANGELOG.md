@@ -1,5 +1,8 @@
 # Change Log
 All notable changes to the J VSCode extension will be documented in this file.
+## [0.9.6] - 2024-01-28
+### Enhancement
+- Add command palate command to open NuVoc in browser (@semperos)
 ## [0.9.5] - 2023-01-05
 ### Fix
 - Fix regression not clearing Terminal cmdline before sending text to it
