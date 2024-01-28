@@ -2,6 +2,8 @@ import {
     Terminal,
     TextEditor,
     ExtensionContext,
+    env,
+    Uri,
     TextEditorEdit,
     commands,
     workspace,
@@ -17,7 +19,8 @@ export function activate(context: ExtensionContext) {
         ['language-j.loadScript', loadScript],
         ['language-j.loadDisplayScript', loadDisplayScript],
         ['language-j.execute', execute],
-        ['language-j.executeAdvance', executeAdvance]
+        ['language-j.executeAdvance', executeAdvance],
+        ['language-j.openNuVoc', openNuVoc]
     ]
 
     for (const [n, f] of cmds) { commands.registerTextEditorCommand(n, f) }
@@ -151,3 +154,7 @@ function sendTerminalText(txt: string) {
     terminal.sendText(clearline + txt, !txt.endsWith('\n'));
 }
 
+function openNuVoc() {
+    const NuVocURL = 'https://code.jsoftware.com/wiki/NuVoc'
+    env.openExternal(Uri.parse(NuVocURL))
+}
